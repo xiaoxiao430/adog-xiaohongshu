@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1974b9">
+  <meta name="description" content="爱多格扫码分享海报：预览、下载清晰图片与可编辑PPT，扫码进入顾客分享页。">
+  <meta name="referrer" content="no-referrer">
+  <title>爱多格 · 扫码分享海报</title>
+  <link rel="icon" href="../assets/adog-logo.png" type="image/png">
+  <style>
+    @font-face{font-family:"Microsoft YaHei";src:url("../assets/yahei.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+    :root{--blue:#1974b9;--deep:#133d60;--pink:#ec8bb3;--paper:#fffaf6;--ink:#17394d;--muted:#667e8c;--line:#dce6eb}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Microsoft YaHei";line-height:1.7}a{color:inherit;text-decoration:none;font:inherit}a:focus-visible{outline:3px solid var(--pink);outline-offset:5px}
+    .shell{max-width:1280px;margin:auto;padding:0 52px}.topbar{height:112px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:14px}.logo{width:64px;height:64px;object-fit:contain}.brand-name{font-size:18px;font-weight:700;letter-spacing:.04em}.brand-sub{font-size:12px;color:var(--muted);margin-top:2px;letter-spacing:.16em}.back{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}.back:hover{color:var(--blue)}
+    main{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(310px,.9fr);gap:84px;align-items:center;padding:64px 0 72px}.preview-area{position:relative;padding:18px 26px 24px 10px}.preview-area::before{content:"";position:absolute;inset:0 0 0 27%;background:#eaf3fa;border-radius:180px 180px 26px 26px}.preview-area::after{content:"";position:absolute;right:10px;top:48px;width:68px;height:68px;border-radius:50%;background:var(--pink);opacity:.68}.poster-wrap{position:relative;z-index:1;max-width:440px;min-height:320px;aspect-ratio:3/4;background:white;box-shadow:0 18px 45px #17394d1c,0 1px 1px #17394d0d;transform:rotate(-2deg);padding:11px}.poster-image{display:block;width:100%;height:auto;max-height:700px;object-fit:contain}.poster-image[hidden]{display:none}.placeholder{height:100%;min-height:320px;display:grid;align-content:center;justify-items:center;padding:34px;text-align:center;background:#f7fafc;color:var(--muted);border:1px dashed #c7d8e4}.placeholder[hidden]{display:none}.placeholder img{width:105px;height:105px;object-fit:contain;margin-bottom:24px}.placeholder strong{font-size:20px;color:var(--deep)}.placeholder p{margin:10px 0 0;font-size:14px}.preview-label{position:relative;z-index:2;display:flex;align-items:center;gap:14px;max-width:440px;margin-top:24px;font-size:12px;color:var(--muted)}.preview-label::before{content:"";height:1px;flex:1;background:#c8d9e4}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--blue);font-size:13px;font-weight:700;letter-spacing:.12em;margin:0 0 19px}.eyebrow::before{content:"";width:26px;height:4px;border-radius:8px;background:var(--pink)}h1{font-size:clamp(34px,4.4vw,56px);line-height:1.28;letter-spacing:-.035em;margin:0 0 22px;color:var(--deep)}h1 span{display:block;color:var(--blue)}.intro{max-width:365px;font-size:16px;color:var(--muted);margin:0 0 29px}.formats{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px}.format{font-size:12px;padding:6px 12px;border:1px solid #cddfea;border-radius:5px;background:#f7fbfd;color:#47718b}.actions{display:grid;gap:12px;max-width:385px}.download{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:16px 22px;border:1px solid var(--blue);border-radius:9px;transition:transform .18s,background .18s}.download:hover{transform:translateY(-2px)}.download strong{display:block;font-size:16px;line-height:1.45}.download small{display:block;font-size:11px;opacity:.73;margin-top:3px}.download .arrow{font-size:24px;line-height:1}.primary{background:var(--blue);color:white;box-shadow:0 8px 18px #1974b921}.primary:hover{background:#1165a4}.secondary{background:white;color:var(--blue)}.secondary:hover{background:#eef7fc}.download[aria-disabled="true"]{opacity:.5;pointer-events:none;box-shadow:none}.file-status{font-size:12px;color:var(--muted);min-height:20px;margin:9px 0 22px}.share-link{display:inline-flex;align-items:center;gap:12px;font-size:14px;color:var(--blue);border-bottom:1px solid #b7d6eb;padding:2px 0}.share-link:hover{border-color:var(--blue)}
+    .use-note{margin-top:34px;padding-top:24px;border-top:1px solid var(--line);max-width:385px}.use-note h2{font-size:13px;margin:0 0 11px;color:var(--deep)}.use-note p{font-size:12px;line-height:1.85;color:var(--muted);margin:0}.footer{display:flex;justify-content:space-between;gap:24px;padding:21px 0 30px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.dot{display:inline-block;width:6px;height:6px;background:var(--pink);border-radius:50%;margin-right:8px;vertical-align:middle}
+    @media(max-width:900px){.shell{padding:0 30px}.topbar{height:94px}main{gap:38px;padding:45px 0 50px}.preview-area{padding-right:14px}.poster-wrap{padding:8px}.brand-name{font-size:16px}.logo{width:52px;height:52px}.intro{font-size:14px}h1{font-size:39px}}
+    @media(max-width:650px){.shell{padding:0 22px}.topbar{height:86px}.brand{gap:9px}.logo{width:45px;height:45px}.brand-name{font-size:14px}.brand-sub{font-size:10px;letter-spacing:.08em}.back{font-size:12px;gap:5px}main{display:flex;flex-direction:column;gap:34px;padding:31px 0 40px}.preview-area{width:100%;max-width:360px;order:2;padding:10px 17px 16px 4px}.preview-area::after{width:45px;height:45px;right:1px;top:35px}.poster-wrap{max-width:100%;padding:8px}.preview-label{margin-top:20px}.details{width:100%;order:1}.eyebrow{font-size:11px;margin-bottom:12px}h1{font-size:37px;margin-bottom:14px}h1 span{display:inline;margin-left:.12em}.intro{font-size:14px;max-width:100%;margin-bottom:18px}.formats{margin-bottom:19px;gap:7px}.format{font-size:11px;padding:4px 9px}.actions{max-width:none;grid-template-columns:1fr 1fr;gap:10px}.download{min-height:72px;padding:13px 12px;gap:5px}.download strong{font-size:13px}.download small{font-size:10px}.download .arrow{font-size:20px}.file-status{margin-bottom:13px}.share-link{font-size:13px}.use-note{max-width:none;margin-top:23px;padding-top:18px}.use-note h2{margin-bottom:7px}.footer{font-size:10px;gap:10px;padding:18px 0 23px}.placeholder{min-height:310px}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+    @media print{@page{size:A4 portrait;margin:0}body{background:white}.shell{max-width:none;padding:0}.topbar,.details,.preview-label,.footer{display:none!important}main{display:block;padding:0}.preview-area{padding:0;width:100%;max-width:none}.preview-area::before,.preview-area::after{display:none}.poster-wrap{transform:none;box-shadow:none;max-width:none;padding:0;background:white;aspect-ratio:auto}.poster-image{width:100%;max-height:100vh;object-fit:contain}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="../share/" aria-label="进入爱多格顾客分享页"><img class="logo" src="../assets/adog-logo.png" alt="爱多格Logo" width="64" height="64"><div><div class="brand-name">西安爱多格宠物医院</div><div class="brand-sub">陪伴每一次到店</div></div></a>
+      <a class="back" href="../share/"><span aria-hidden="true">←</span> 返回分享页</a>
+    </header>
+    <main>
+      <section class="preview-area" aria-label="扫码海报预览">
+        <div class="poster-wrap"><div class="placeholder" id="poster-placeholder"><img src="../assets/adog-logo.png" alt="" width="105" height="105"><strong>海报文件准备中</strong><p>文件就绪后，这里会显示完整海报。</p></div><img class="poster-image" id="poster-image" alt="爱多格扫码分享海报，含品牌Logo及顾客分享入口二维码" hidden></div>
+        <div class="preview-label">爱多格 · 门店扫码物料</div>
+      </section>
+      <section class="details" aria-labelledby="page-title">
+        <p class="eyebrow">门店分享物料</p>
+        <h1 id="page-title">爱多格<span>扫码分享海报</span></h1>
+        <p class="intro">摆在前台，邀请顾客用自己的照片和感受，记录这次到店。</p>
+        <div class="formats" aria-label="可下载的文件格式"><span class="format">PNG · 清晰图片</span><span class="format">PPTX · 可编辑文件</span></div>
+        <div class="actions">
+          <a class="download primary" id="download-png" href="./爱多格扫码分享海报.png" download="爱多格扫码分享海报.png" aria-disabled="true" tabindex="-1"><span><strong>下载海报图片</strong><small>适合打印、摆放</small></span><span class="arrow" aria-hidden="true">↓</span></a>
+          <a class="download secondary" id="download-pptx" href="./爱多格扫码分享海报.pptx" download="爱多格扫码分享海报.pptx" aria-disabled="true" tabindex="-1"><span><strong>下载可编辑PPT</strong><small>按门店需要调整</small></span><span class="arrow" aria-hidden="true">↓</span></a>
+        </div>
+        <p class="file-status" id="file-status" role="status" aria-live="polite">正在检查海报文件…</p>
+        <a class="share-link" href="../share/">打开顾客扫码后的页面 <span aria-hidden="true">↗</span></a>
+        <aside class="use-note"><h2>使用前，先用手机试扫一次</h2><p>确认二维码能进入爱多格分享页，再打印摆放。顾客自愿参与，由本人确认内容并自行发布。</p></aside>
+      </section>
+    </main>
+    <footer class="footer"><span><i class="dot" aria-hidden="true"></i>真实体验，自愿分享</span><a href="../">查看门店两周内容计划 ↗</a></footer>
+  </div>
+  <script>
+    (function(){
+      'use strict';
+      var status=document.getElementById('file-status'),image=document.getElementById('poster-image'),placeholder=document.getElementById('poster-placeholder');
+      async function ready(id,kind){
+        var link=document.getElementById(id);
+        try{
+          var response=await fetch(link.href,{method:'HEAD',cache:'no-store'}),type=(response.headers.get('content-type')||'').toLowerCase();
+          if(!response.ok||type.indexOf('text/html')!==-1||(kind==='png'&&type.indexOf('image/')!==0))return false;
+          link.removeAttribute('aria-disabled');link.removeAttribute('tabindex');
+          if(kind==='png'){image.onload=function(){image.hidden=false;placeholder.hidden=true;};image.onerror=function(){image.hidden=true;placeholder.hidden=false;};image.src=link.href;}
+          return true;
+        }catch(error){return false;}
+      }
+      Promise.all([ready('download-png','png'),ready('download-pptx','pptx')]).then(function(files){status.textContent=files.every(Boolean)?'两种格式均可下载。':files.some(Boolean)?'部分文件已就绪，其余文件准备中。':'海报文件准备中，请稍后刷新。';});
+      document.querySelectorAll('.download').forEach(function(link){link.addEventListener('click',function(event){if(link.getAttribute('aria-disabled')==='true')event.preventDefault();});});
+    }());
+  </script>
+</body>
+</html>
