@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f9fc">
+  <meta name="description" content="西安爱多格小红书两周内容：10篇图文、4条短视频，逐天查看文案、参考图和拍摄清单。">
+  <title>爱多格 · 小红书两周内容</title>
+  <link rel="icon" href="assets/adog-logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <script src="content.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#detail">直接查看当日内容</a>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="brand"><img class="brand-logo" src="assets/adog-logo.png" alt="爱多格Logo" width="42" height="42"><span>西安爱多格<span class="brand-separator">/</span><span class="brand-note">新媒体执行</span></span></div>
+      <div class="title-row"><div><p class="eyebrow">14天内容排期</p><h1>小红书两周内容</h1></div><div class="edition">医院 <b>7</b> 篇<span>·</span>洗护 <b>7</b> 篇</div></div>
+      <p class="intro">选一天，复制文案，再按清单拍摄。10篇图文，4条短视频。</p>
+    </header>
+
+    <main>
+      <section class="calendar" aria-labelledby="calendar-title">
+        <div class="calendar-toolbar">
+          <div class="toolbar-left"><h2 id="calendar-title">发布日历</h2><div class="business-filters" role="group" aria-label="筛选业务"><button type="button" class="filter-button active" data-filter="all" aria-pressed="true">全部</button><button type="button" class="filter-button" data-filter="医院" aria-pressed="false">医院</button><button type="button" class="filter-button" data-filter="洗护" aria-pressed="false">洗护</button></div></div>
+          <div class="toolbar-right"><span id="result-count" aria-live="polite">14篇内容</span><label class="format-label" for="format-filter">形式<select id="format-filter"><option value="all">全部形式</option><option value="图文">图文</option><option value="视频">视频</option></select></label></div>
+        </div>
+        <div id="days" class="days-grid" aria-label="选择日序"></div>
+        <p class="calendar-note">D1是实际启动的第一天，按门店准备情况安排日期。</p>
+      </section>
+
+      <section class="daily-content" aria-label="当日内容">
+        <div class="detail-toolbar"><div class="day-navigation"><button id="prev-day" class="arrow-button" type="button" aria-label="上一篇">←</button><span id="day-position">第1篇 / 共14篇</span><button id="next-day" class="arrow-button" type="button" aria-label="下一篇">→</button></div><button type="button" class="copy-button" id="copy-button"><svg width="17" height="17" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M12 4V3H3v9h1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>复制文案和话题</button></div>
+        <div id="detail" tabindex="-1"></div>
+        <div id="empty" class="empty-state" hidden>当前没有符合条件的内容，请调整筛选。</div>
+      </section>
+    </main>
+
+    <footer class="page-footer"><p>参考图供拍摄学习，正式发布使用本店实拍。医院内容由院长审核。</p><span>爱多格 · 两周执行稿</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript">请启用JavaScript查看14天的文案与拍摄清单。</p></noscript>
+</body>
+</html>
