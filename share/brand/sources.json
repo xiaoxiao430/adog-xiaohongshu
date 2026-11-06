@@ -16,5 +16,13 @@
     "source": "https://apps.apple.com/cn/app/%E7%BE%8E%E5%9B%A2-%E9%97%AE%E7%BE%8E%E5%9B%A2-%E9%83%BD%E5%AE%89%E6%8E%92/id423084029?uo=4",
     "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cc/1f/5d/cc1f5dcb-92b6-0e0b-6f08-7a40e16e49d0/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-85-220.png/512x512bb.jpg",
     "checkedAt": "2026-11-05"
+  },
+  "douyin": {
+    "name": "抖音",
+    "developer": "Beijing Douyin Technology Co., Ltd.",
+    "source": "https://apps.apple.com/cn/app/%E6%8A%96%E9%9F%B3/id1142110895?uo=4",
+    "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a4/4d/bc/a44dbc69-cbdf-b68c-ea88-d449683563e9/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/512x512bb.jpg",
+    "checkedAt": "2026-11-06",
+    "note": "Developer-submitted original App Store icon, converted losslessly from JPEG container to PNG; no redrawing or AI generation."
   }
 }

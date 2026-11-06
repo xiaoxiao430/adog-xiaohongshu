@@ -1,0 +1,692 @@
+{
+  "version": "2026-11-06-copy-library-20-v1",
+  "coreCount": 20,
+  "platforms": [
+    "xhs",
+    "dianping",
+    "meituan",
+    "douyin"
+  ],
+  "platformVersionCount": 80,
+  "contentType": "ai_illustration_caption",
+  "notCustomerReviews": true,
+  "medicalCopy": "由本人手写，不提供预配稿",
+  "entries": [
+    {
+      "id": "aidog-copy-01-old-bath-towel",
+      "packId": "beccd833-9bc4-420f-b3a2-8914706b9cfc",
+      "packLabel": "AI原创·洗护小日常",
+      "serviceIds": [
+        "bath",
+        "care"
+      ],
+      "title": "裹上蓝毛巾的小卷毛",
+      "body": "浅蓝色小浴盆，几颗泡泡，一只奶油色的小卷毛。换到下一张，蓝毛巾搭在肩上，旁边还放着梳子。两张洗护小画，配一张猫狗同框。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "裹上蓝毛巾的小卷毛",
+          "body": "浅蓝色小浴盆，几颗泡泡，一只奶油色的小卷毛。换到下一张，蓝毛巾搭在肩上，旁边还放着梳子。两张洗护小画，配一张猫狗同框。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "小卷毛洗护主题插画",
+          "body": "本组为小卷毛洗护主题配图，画面包含浅蓝浴盆、披着毛巾的小狗和猫狗合影。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "小卷毛洗护主题插画",
+          "body": "三张宠物主题插画：小卷毛泡泡浴、毛巾造型，以及猫狗同框。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "小卷毛和它的蓝毛巾",
+          "body": "泡泡浴一张，蓝毛巾一张，最后让猫咪也入镜。三张小卷毛主题插画。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/01-洗澡时刻-AI示意.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/02-毛巾时刻-AI示意.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/03-猫狗陪伴-AI示意.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-02-old-bath-blue-pink",
+      "packId": "beccd833-9bc4-420f-b3a2-8914706b9cfc",
+      "packLabel": "AI原创·洗护小日常",
+      "serviceIds": [
+        "bath",
+        "care"
+      ],
+      "title": "这批图有猫也有狗",
+      "body": "前两张画的是小卷毛和洗护用品，最后一张让猫狗坐到一起。蓝色小浴盆、蓝毛巾，连猫狗身边的靠垫也用了浅蓝。整组的粉色只点了一点。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "这批图有猫也有狗",
+          "body": "前两张画的是小卷毛和洗护用品，最后一张让猫狗坐到一起。蓝色小浴盆、蓝毛巾，连猫狗身边的靠垫也用了浅蓝。整组的粉色只点了一点。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "蓝粉宠物主题配图",
+          "body": "蓝粉配色的宠物插画，共三张。主体为奶油色小狗，第三张加入猫咪；图中可见浴盆、毛巾和靠垫。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "蓝粉宠物主题配图",
+          "body": "本组图片采用蓝粉配色，展示小狗泡泡浴、毛巾造型及猫狗坐在一起的画面。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "这一批，猫狗都有",
+          "body": "浅蓝浴盆、蓝毛巾，再来一张猫狗同框。这一批的颜色刚好能接上。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/01-洗澡时刻-AI示意.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/02-毛巾时刻-AI示意.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/03-猫狗陪伴-AI示意.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-03-old-companion-three",
+      "packId": "babcc943-e075-43cf-bb10-df9a0f2201ba",
+      "packLabel": "AI原创·有宠陪伴",
+      "serviceIds": [
+        "care",
+        "consult"
+      ],
+      "title": "沙发、窗边，还有一只柯基",
+      "body": "金毛躺在沙发上，橘猫坐在窗边，柯基靠着自己的小床。三张图各有一块小地方，放在一起就是一组毛茸茸的室内日常。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "沙发、窗边，还有一只柯基",
+          "body": "金毛躺在沙发上，橘猫坐在窗边，柯基靠着自己的小床。三张图各有一块小地方，放在一起就是一组毛茸茸的室内日常。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "宠物室内日常插画",
+          "body": "三张宠物室内主题插画，分别以沙发上的金毛、窗边的橘猫和小床旁的柯基为主体。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "宠物室内日常插画",
+          "body": "配图展示三种宠物形象：金毛、橘猫、柯基。场景包括沙发、窗边和宠物床。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "三只毛孩子，各有各的位置",
+          "body": "金毛选沙发，橘猫选窗边，柯基挨着小床。三张宠物日常小画。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/04-金毛陪伴-AI示意.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/05-橘猫日常-AI示意.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/06-柯基时光-AI示意.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-04-old-companion-window",
+      "packId": "babcc943-e075-43cf-bb10-df9a0f2201ba",
+      "packLabel": "AI原创·有宠陪伴",
+      "serviceIds": [
+        "care",
+        "consult"
+      ],
+      "title": "这一批想多看一会儿橘猫",
+      "body": "窗边那张橘猫，白爪子和蓝靠垫特别显眼。一起配上的还有沙发上的金毛、地毯边的柯基。三张都是浅色背景，毛发的颜色倒是各不相同。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "这一批想多看一会儿橘猫",
+          "body": "窗边那张橘猫，白爪子和蓝靠垫特别显眼。一起配上的还有沙发上的金毛、地毯边的柯基。三张都是浅色背景，毛发的颜色倒是各不相同。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "金毛橘猫柯基配图",
+          "body": "本组为金毛、橘猫与柯基的插画配图。橘猫画面采用窗边背景，另两张为沙发和宠物床旁的室内场景。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "金毛橘猫柯基配图",
+          "body": "三张室内宠物插画，以橘猫、金毛和柯基为主体，搭配浅色背景及蓝色布艺。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "窗边这只橘猫有点抢镜",
+          "body": "白爪子搭着蓝靠垫，旁边还有金毛和柯基。三张毛色不同的小画像。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/04-金毛陪伴-AI示意.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/05-橘猫日常-AI示意.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码图文素材-20261106/06-柯基时光-AI示意.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-05-golden-bubbles",
+      "packId": "d55daef8-5eaf-495d-b3bf-aedbf9aa9c15",
+      "packLabel": "AI示意·金毛洗护",
+      "serviceIds": [
+        "bath",
+        "care"
+      ],
+      "title": "金毛一身泡泡的样子",
+      "body": "图里的金毛耳朵湿湿的，背上堆着一层泡泡，嘴巴张得很大。后面配了擦干和梳毛的画面，连起来像一段小小的洗护分镜。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "金毛一身泡泡的样子",
+          "body": "图里的金毛耳朵湿湿的，背上堆着一层泡泡，嘴巴张得很大。后面配了擦干和梳毛的画面，连起来像一段小小的洗护分镜。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "金毛洗护主题配图",
+          "body": "本组以金毛为主体，三张画面分别展示泡沫浴、毛巾擦拭及毛发梳理的插画场景。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "金毛洗护主题配图",
+          "body": "金毛洗护主题插画，共三张，画面元素包括浴盆、泡沫、蓝毛巾和梳子。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "这只金毛，泡泡挂满背",
+          "body": "一身泡泡，裹上蓝毛巾，再梳梳长毛。金毛洗护主题的三张小画。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/01-金毛洗澡.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/02-金毛擦干.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/03-金毛梳毛.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-06-golden-towel",
+      "packId": "d55daef8-5eaf-495d-b3bf-aedbf9aa9c15",
+      "packLabel": "AI示意·金毛洗护",
+      "serviceIds": [
+        "bath",
+        "care"
+      ],
+      "title": "蓝毛巾一裹，脸更大了",
+      "body": "金毛裹上蓝毛巾，两只前爪还露在外面。耳边的毛和脚下的粉色地毯都画得很细，这张的大脸几乎占了画面正中间。前后两张接着泡泡浴和梳毛。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "蓝毛巾一裹，脸更大了",
+          "body": "金毛裹上蓝毛巾，两只前爪还露在外面。耳边的毛和脚下的粉色地毯都画得很细，这张的大脸几乎占了画面正中间。前后两张接着泡泡浴和梳毛。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "金毛毛巾主题插画",
+          "body": "本组三图包含金毛洗护场景，其中毛巾画面以裹着蓝毛巾的金毛正面形象为主体。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "金毛毛巾主题插画",
+          "body": "金毛主题三图，包含泡泡浴、蓝毛巾擦拭及梳毛画面；毛巾图为正面构图。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "蓝毛巾里的一张金毛大脸",
+          "body": "两只爪子还在外面，耳边的毛一缕一缕。三张里，这张最像小肖像。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/01-金毛洗澡.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/02-金毛擦干.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/03-金毛梳毛.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-07-golden-brush",
+      "packId": "d55daef8-5eaf-495d-b3bf-aedbf9aa9c15",
+      "packLabel": "AI示意·金毛洗护",
+      "serviceIds": [
+        "bath",
+        "care"
+      ],
+      "title": "梳子划过金色长毛",
+      "body": "侧身站着的金毛，背上是一把小梳子，脚下铺着蓝色垫子。这张把重点放在毛发的线条上，放大看还能看见一缕一缕的纹理。旁边两张接上泡泡和蓝毛巾。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "梳子划过金色长毛",
+          "body": "侧身站着的金毛，背上是一把小梳子，脚下铺着蓝色垫子。这张把重点放在毛发的线条上，放大看还能看见一缕一缕的纹理。旁边两张接上泡泡和蓝毛巾。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "金毛毛发梳理配图",
+          "body": "这组金毛插画包含毛发梳理画面，主体侧身站在蓝色垫子上；另两张展示泡泡浴和毛巾造型。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "金毛毛发梳理配图",
+          "body": "三张金毛插画中的梳理画面，呈现梳子、长毛及蓝色防滑垫等元素。其余两张为洗护主题。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "金色长毛，要一缕一缕画",
+          "body": "侧身的金毛、小梳子、蓝垫子。这张的细节都在毛发里。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/01-金毛洗澡.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/02-金毛擦干.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/03-金毛梳毛.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-08-bichon-bubbles",
+      "packId": "5b8a6832-0a8c-4918-ae2d-4802b63c6cfb",
+      "packLabel": "AI示意·比熊洗护",
+      "serviceIds": [
+        "bath",
+        "care"
+      ],
+      "title": "比熊差点和泡泡融为一体",
+      "body": "白色小卷毛坐进浅色浴盆里，泡泡浮在边上，两只圆眼睛很显眼。接着换成蓝毛巾和吹护画面，白毛在这组三张里一直是主角。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "比熊差点和泡泡融为一体",
+          "body": "白色小卷毛坐进浅色浴盆里，泡泡浮在边上，两只圆眼睛很显眼。接着换成蓝毛巾和吹护画面，白毛在这组三张里一直是主角。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "比熊泡沫浴主题配图",
+          "body": "三张比熊洗护主题插画，包含浅色浴盆中的泡沫浴、蓝毛巾造型和吹护场景。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "比熊泡沫浴主题配图",
+          "body": "比熊主题三图，以白色卷毛为主要视觉，分别搭配浴盆、蓝毛巾和吹护用品。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "白团子差点混进泡泡里",
+          "body": "浴盆里一团白，裹上毛巾还是一团白。比熊洗护主题三张。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/04-比熊洗澡.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/05-比熊毛巾.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/06-比熊吹护.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-09-bichon-towel",
+      "packId": "5b8a6832-0a8c-4918-ae2d-4802b63c6cfb",
+      "packLabel": "AI示意·比熊洗护",
+      "serviceIds": [
+        "bath",
+        "care"
+      ],
+      "title": "裹着蓝毛巾的白团子",
+      "body": "毛巾搭在比熊身上，头顶的卷毛一圈一圈。浅蓝、奶白和一点粉色放在一起，小狗的鼻尖反而最抢眼。这一张旁边，还配了泡泡浴和吹护的分镜。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "裹着蓝毛巾的白团子",
+          "body": "毛巾搭在比熊身上，头顶的卷毛一圈一圈。浅蓝、奶白和一点粉色放在一起，小狗的鼻尖反而最抢眼。这一张旁边，还配了泡泡浴和吹护的分镜。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "比熊毛巾主题插画",
+          "body": "本组比熊配图中，毛巾画面采用浅蓝毛巾与白色卷毛的正面构图；另含泡沫浴和吹护两张。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "比熊毛巾主题插画",
+          "body": "三张比熊主题插画，包含毛巾造型画面，使用浅蓝、奶白及粉色配色。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "蓝毛巾包住一只白团子",
+          "body": "卷毛一圈一圈，黑鼻尖最显眼。三张比熊小画里的一张近景。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/04-比熊洗澡.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/05-比熊毛巾.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/06-比熊吹护.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-10-bichon-dry",
+      "packId": "5b8a6832-0a8c-4918-ae2d-4802b63c6cfb",
+      "packLabel": "AI示意·比熊洗护",
+      "serviceIds": [
+        "bath",
+        "care"
+      ],
+      "title": "风从比熊背上吹过去",
+      "body": "比熊站在蓝色垫子上，侧边的吹风机朝着背部，白毛轻轻散开。这组三张把泡泡、毛巾和吹护画成了连着的小场景，最后一张留给蓬松的毛发。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "风从比熊背上吹过去",
+          "body": "比熊站在蓝色垫子上，侧边的吹风机朝着背部，白毛轻轻散开。这组三张把泡泡、毛巾和吹护画成了连着的小场景，最后一张留给蓬松的毛发。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "比熊吹护主题配图",
+          "body": "比熊洗护主题插画包含吹护画面，狗狗站在蓝色垫子上，吹护用品位于身体侧边。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "比熊吹护主题配图",
+          "body": "本组三张展示比熊泡沫浴、毛巾造型和吹护主题场景，均为宠物服务题材插画。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "白毛被风轻轻吹开",
+          "body": "蓝垫子上的比熊，侧边是一把吹风机。这组最后一张，把画面留给白色卷毛。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/04-比熊洗澡.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/05-比熊毛巾.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/06-比熊吹护.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-11-poodle-curls",
+      "packId": "87696a00-4fa1-4fee-9cd1-4bf52101365d",
+      "packLabel": "AI示意·贵宾美容",
+      "serviceIds": [
+        "groom",
+        "care"
+      ],
+      "title": "贵宾的卷毛有好多小弯",
+      "body": "梳子贴着棕色卷毛，小贵宾侧身站在垫子上。耳朵和腿边的毛一团一团，保留着许多小弯。另两张换成修毛和趴着休息的画面。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "贵宾的卷毛有好多小弯",
+          "body": "梳子贴着棕色卷毛，小贵宾侧身站在垫子上。耳朵和腿边的毛一团一团，保留着许多小弯。另两张换成修毛和趴着休息的画面。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "贵宾梳理主题配图",
+          "body": "本组三张为棕色贵宾梳理主题插画，包含梳毛、修饰毛发及垫上休息的画面。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "贵宾梳理主题配图",
+          "body": "棕色贵宾主题三图，梳理画面以卷毛、梳子和稳定的垫面为主要元素。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "贵宾的卷毛，连小弯都画了",
+          "body": "耳朵一团，腿边一团。三张棕色贵宾小画，细节藏在卷毛里。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/07-贵宾梳理.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/08-贵宾修毛.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/09-贵宾休息.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-12-poodle-album",
+      "packId": "87696a00-4fa1-4fee-9cd1-4bf52101365d",
+      "packLabel": "AI示意·贵宾美容",
+      "serviceIds": [
+        "groom",
+        "care"
+      ],
+      "title": "这组棕色小卷毛很上镜",
+      "body": "梳理毛发、修剪造型，再到垫子上趴一会儿，三张画里都是棕色贵宾。浅蓝毛巾配上一点粉色，像同一本宠物画册里翻出来的几页。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "这组棕色小卷毛很上镜",
+          "body": "梳理毛发、修剪造型，再到垫子上趴一会儿，三张画里都是棕色贵宾。浅蓝毛巾配上一点粉色，像同一本宠物画册里翻出来的几页。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "棕色贵宾造型主题插画",
+          "body": "三张棕色贵宾插画采用一致配色，展示毛发梳理、造型修剪及垫上休息的主题场景。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "棕色贵宾造型主题插画",
+          "body": "本组为贵宾造型主题配图，主体为棕色卷毛小狗，搭配梳理用品、蓝色垫面与浅色背景。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "棕色小卷毛的三页画册",
+          "body": "梳毛一页，修毛一页，趴着的小像再来一页。贵宾主题三图。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/07-贵宾梳理.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/08-贵宾修毛.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/09-贵宾休息.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-13-poodle-rest",
+      "packId": "87696a00-4fa1-4fee-9cd1-4bf52101365d",
+      "packLabel": "AI示意·贵宾美容",
+      "serviceIds": [
+        "groom",
+        "care"
+      ],
+      "title": "最后一张，贵宾趴下了",
+      "body": "前两张还是梳理和修毛的画面，第三张小贵宾已经趴在蓝色垫子上，旁边搁着梳子。把这三张排在一起，故事刚好停在休息这一幕。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "最后一张，贵宾趴下了",
+          "body": "前两张还是梳理和修毛的画面，第三张小贵宾已经趴在蓝色垫子上，旁边搁着梳子。把这三张排在一起，故事刚好停在休息这一幕。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "贵宾休息主题配图",
+          "body": "本组贵宾插画的第三张为垫上休息画面，搭配蓝色垫面和梳子；前两张为梳理与修剪主题。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "贵宾休息主题配图",
+          "body": "棕色贵宾三图中包含一张卧姿画像，其余画面呈现梳理和修剪毛发的插画场景。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "翻到最后一张，它趴下了",
+          "body": "蓝垫子、小梳子，还有一只趴着的贵宾。这组小画停在这一幕。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/07-贵宾梳理.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/08-贵宾修毛.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/09-贵宾休息.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-14-corgi-short-legs",
+      "packId": "3e074dee-24d0-4df1-b9af-651c98931a3f",
+      "packLabel": "AI示意·柯基美容",
+      "serviceIds": [
+        "groom",
+        "care"
+      ],
+      "title": "柯基的短腿，画里也藏不住",
+      "body": "小梳子沿着背毛往下，柯基的短腿站在垫子上。另一张把画面挪到前爪，最后留一张趴着的小像。三张放一块，都是圆滚滚的轮廓。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "柯基的短腿，画里也藏不住",
+          "body": "小梳子沿着背毛往下，柯基的短腿站在垫子上。另一张把画面挪到前爪，最后留一张趴着的小像。三张放一块，都是圆滚滚的轮廓。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "柯基梳理主题配图",
+          "body": "三张柯基梳理主题插画，分别以背部梳毛、前爪周围毛发整理及卧姿形象为画面重点。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "柯基梳理主题配图",
+          "body": "本组柯基插画包含背部梳理和爪边毛发整理画面，另配一张卧姿小像。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "短腿柯基，换个角度还是短腿",
+          "body": "背毛一张，小爪子一张，最后一张让柯基趴着。三张都圆滚滚。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/10-柯基梳毛.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/11-柯基足部梳理.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/12-柯基整理后小憩.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-15-corgi-paw",
+      "packId": "3e074dee-24d0-4df1-b9af-651c98931a3f",
+      "packLabel": "AI示意·柯基美容",
+      "serviceIds": [
+        "groom",
+        "care"
+      ],
+      "title": "这张柯基，重点在小爪子",
+      "body": "前爪搭在软垫上，小梳子靠在爪边，脑袋还抬着。毛发和小短腿的细节都能看清；这一张配上背部梳理和趴卧的画面，刚好凑成一批。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "这张柯基，重点在小爪子",
+          "body": "前爪搭在软垫上，小梳子靠在爪边，脑袋还抬着。毛发和小短腿的细节都能看清；这一张配上背部梳理和趴卧的画面，刚好凑成一批。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "柯基爪边梳理插画",
+          "body": "本组三图包含柯基前爪周围毛发梳理画面，另两张分别展示背部梳毛与卧姿形象。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "柯基爪边梳理插画",
+          "body": "柯基梳理主题配图，近景画面展示前爪、毛发、小梳子与垫面等元素。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "镜头往下，看看柯基的小爪子",
+          "body": "爪子搭着软垫，梳子靠在一边。这一张把细节放在了小短腿附近。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/10-柯基梳毛.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/11-柯基足部梳理.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/12-柯基整理后小憩.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-16-corgi-couch",
+      "packId": "3e074dee-24d0-4df1-b9af-651c98931a3f",
+      "packLabel": "AI示意·柯基美容",
+      "serviceIds": [
+        "groom",
+        "care"
+      ],
+      "title": "梳子和毛巾旁边有只柯基",
+      "body": "柯基趴在浅色小沙发上，蓝毛巾叠在一边，梳子就放在前面。两只前爪朝着画外伸过来，耳朵还是直直立着。前两张留给背毛和爪边的小细节。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "梳子和毛巾旁边有只柯基",
+          "body": "柯基趴在浅色小沙发上，蓝毛巾叠在一边，梳子就放在前面。两只前爪朝着画外伸过来，耳朵还是直直立着。前两张留给背毛和爪边的小细节。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "柯基卧姿主题插画",
+          "body": "本组柯基插画中，卧姿画面搭配浅色沙发、蓝毛巾与梳子；其余两张为毛发梳理主题。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "柯基卧姿主题插画",
+          "body": "三张柯基主题配图包含一张卧姿画像，画面可见沙发、毛巾及梳理用品。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "梳子放下，柯基也趴下了",
+          "body": "蓝毛巾叠在旁边，两只前爪伸过来。柯基这组三张，最后是一张卧姿小像。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/10-柯基梳毛.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/11-柯基足部梳理.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/12-柯基整理后小憩.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-17-cat-orange-brush",
+      "packId": "f4e4f8f4-5633-4799-a3a7-ad4a7591c26d",
+      "packLabel": "AI示意·猫咪日常护理",
+      "serviceIds": [
+        "care"
+      ],
+      "title": "橘猫和梳子挤进同一张画",
+      "body": "橘猫坐在奶白色垫子上，小刷子落在肩边的毛发上。蓝毛巾、粉靠垫都在一旁，主角还是那张圆圆的猫脸。这批还配了橘白猫和银色虎斑的画像。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "橘猫和梳子挤进同一张画",
+          "body": "橘猫坐在奶白色垫子上，小刷子落在肩边的毛发上。蓝毛巾、粉靠垫都在一旁，主角还是那张圆圆的猫脸。这批还配了橘白猫和银色虎斑的画像。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "猫咪日常梳理配图",
+          "body": "本组为猫咪日常护理主题插画，包含橘猫肩部梳毛、橘白猫与毛巾，以及银色虎斑坐姿的画面。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "猫咪日常梳理配图",
+          "body": "猫咪日常主题三图，主体包括橘猫、橘白猫和银色虎斑，搭配梳子、毛巾与软垫。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "橘猫的圆脸，梳子都挡不住",
+          "body": "肩边一把小刷子，旁边一条蓝毛巾。这一批，主角换成猫咪。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/13-橘猫梳毛.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/14-猫咪毛巾休息.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/15-猫咪日常观察.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-18-cat-three-coats",
+      "packId": "f4e4f8f4-5633-4799-a3a7-ad4a7591c26d",
+      "packLabel": "AI示意·猫咪日常护理",
+      "serviceIds": [
+        "care"
+      ],
+      "title": "这批三张，换猫咪当主角",
+      "body": "一只橘猫在梳毛，一只橘白猫挨着毛巾休息，还有一只银色虎斑坐在蓝垫子上。毛色不一样，画面的蓝粉色调倒是接得很自然。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "这批三张，换猫咪当主角",
+          "body": "一只橘猫在梳毛，一只橘白猫挨着毛巾休息，还有一只银色虎斑坐在蓝垫子上。毛色不一样，画面的蓝粉色调倒是接得很自然。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "三种毛色的猫咪插画",
+          "body": "本组三张猫咪插画分别展示橘猫、橘白猫和银色虎斑，均采用浅色护理场景与蓝粉配色。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "三种毛色的猫咪插画",
+          "body": "猫咪日常护理主题配图，共三张，画面分别以不同毛色的猫及梳理用品为主体。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "橘猫、橘白、银虎斑，凑一批",
+          "body": "同一组蓝粉色的小画，换了三种毛色。猫咪日常护理主题三张。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/13-橘猫梳毛.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/14-猫咪毛巾休息.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/15-猫咪日常观察.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-19-consult-desk",
+      "packId": "9e276da8-55e0-4365-88be-852607da76bf",
+      "packLabel": "AI示意·猫狗到店咨询",
+      "serviceIds": [
+        "consult"
+      ],
+      "title": "接待台前，猫狗各占一边",
+      "body": "狗狗坐在牵引绳旁，猫咪待在敞开的航空箱里，蓝色接待台就在后面。这组画选了接待与咨询的场景，细节留在脚边、提手和小垫子上。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "接待台前，猫狗各占一边",
+          "body": "狗狗坐在牵引绳旁，猫咪待在敞开的航空箱里，蓝色接待台就在后面。这组画选了接待与咨询的场景，细节留在脚边、提手和小垫子上。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "宠物接待咨询主题配图",
+          "body": "本组为宠物接待与咨询主题插画，包含牵引绳旁的狗狗、航空箱中的猫，以及猫狗同框画面。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "宠物接待咨询主题配图",
+          "body": "三张接待咨询主题插画，画面元素包括蓝色接待台、牵引绳、航空箱及猫狗形象。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "接待台前，猫狗各坐一边",
+          "body": "狗狗在牵引绳旁，猫咪在敞开的航空箱里。三张接待咨询主题的小画。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/16-到店咨询狗狗.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/17-猫咪咨询等待.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/18-猫狗咨询台.png"
+      ]
+    },
+    {
+      "id": "aidog-copy-20-consult-carrier",
+      "packId": "9e276da8-55e0-4365-88be-852607da76bf",
+      "packLabel": "AI示意·猫狗到店咨询",
+      "serviceIds": [
+        "consult"
+      ],
+      "title": "箱门开着，猫咪还在里面",
+      "body": "这一张的视线很低：敞开的蓝色航空箱、猫咪露出的前爪，还有旁边的椅脚。和狗狗那两张放在一起，是一组接待与等候主题的小插画。\n\n配图为AI示意图，非到店实拍。",
+      "platforms": {
+        "xhs": {
+          "title": "箱门开着，猫咪还在里面",
+          "body": "这一张的视线很低：敞开的蓝色航空箱、猫咪露出的前爪，还有旁边的椅脚。和狗狗那两张放在一起，是一组接待与等候主题的小插画。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "dianping": {
+          "title": "航空箱与猫咪主题配图",
+          "body": "本组接待主题插画包含一张航空箱中的猫咪，另两张展示狗狗及猫狗同框的接待场景。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "航空箱与猫咪主题配图",
+          "body": "三张宠物接待主题插画中，猫咪画面展示敞开的航空箱、猫咪前爪及座椅等元素。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "箱门开着，猫咪还没出来",
+          "body": "低一点的视线，刚好看见航空箱里的猫爪。配上另外两张，凑成接待主题三图。\n\n配图为AI示意图，非到店实拍。"
+        }
+      },
+      "imagePaths": [
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/16-到店咨询狗狗.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/17-猫咪咨询等待.png",
+        "/Users/xiaoxiao/XTobs/projects/西安爱多格/output/扫码服务批次素材-20261106/18-猫狗咨询台.png"
+      ]
+    }
+  ]
+}

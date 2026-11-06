@@ -1,0 +1,438 @@
+{
+  "version": "2026-11-06-review-service-themes-18-v1",
+  "coreCount": 18,
+  "platforms": [
+    "dianping",
+    "meituan",
+    "douyin"
+  ],
+  "platformVersionCount": 54,
+  "contentType": "service_theme_illustration",
+  "notVerifiedConsumerReviews": true,
+  "notMedicalAdvice": true,
+  "note": "图片与服务主题说明，不声称发生过真实消费、诊疗或服务；实际经历与结果由本人按真实情况补充。原20条小红书素材未改。",
+  "serviceTypes": [
+    {
+      "id": "spay",
+      "label": "绝育"
+    },
+    {
+      "id": "vaccine",
+      "label": "疫苗"
+    },
+    {
+      "id": "checkup",
+      "label": "体检"
+    },
+    {
+      "id": "deworm",
+      "label": "驱虫"
+    },
+    {
+      "id": "consult",
+      "label": "诊疗"
+    },
+    {
+      "id": "bath",
+      "label": "洗澡"
+    }
+  ],
+  "entries": [
+    {
+      "id": "aidog-review-theme-spay-01",
+      "serviceType": "spay",
+      "serviceName": "绝育",
+      "title": "宠物绝育主题，单独放一组",
+      "body": "这一组留给宠物绝育主题。配图选的是宠物日常插画，让这个项目在相册里有个单独的位置。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "宠物绝育主题，单独放一组",
+          "body": "这一组留给宠物绝育主题。配图选的是宠物日常插画，让这个项目在相册里有个单独的位置。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "宠物绝育主题，单独放一组",
+          "body": "三张宠物插画归在绝育主题下，用来区分这一服务项目。画面本身仍是宠物日常。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "绝育主题，配一组宠物小画",
+          "body": "宠物绝育单独放一条，三张小画作主题配图。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-spay-02",
+      "serviceType": "spay",
+      "serviceName": "绝育",
+      "title": "给绝育主题配三张小画",
+      "body": "三张宠物小画配在一起，归到绝育这一栏。画面保留日常场景，图文只作服务主题说明。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "给绝育主题配三张小画",
+          "body": "三张宠物小画配在一起，归到绝育这一栏。画面保留日常场景，图文只作服务主题说明。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "给绝育主题配三张小画",
+          "body": "这组三图对应宠物绝育主题，使用宠物日常插画作配图，不含实际手术场景。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "三张小画，放在绝育主题下",
+          "body": "这一批是绝育主题，配上三张宠物插画。画面没有对应具体病例。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-spay-03",
+      "serviceType": "spay",
+      "serviceName": "绝育",
+      "title": "这组配图的主题是绝育",
+      "body": "这组以宠物绝育为主题，图片用的是宠物插画。图文用于主题整理，没有对应真实手术或术后结果。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "这组配图的主题是绝育",
+          "body": "这组以宠物绝育为主题，图片用的是宠物插画。图文用于主题整理，没有对应真实手术或术后结果。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "这组配图的主题是绝育",
+          "body": "本组为绝育主题的宠物插画配图，共三张。图片不作为手术经过或术后效果记录。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "换一组，还是绝育主题",
+          "body": "服务主题是宠物绝育，画面选用宠物日常插画，只作主题配图。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-vaccine-01",
+      "serviceType": "vaccine",
+      "serviceName": "疫苗",
+      "title": "宠物疫苗主题的三张配图",
+      "body": "疫苗这个项目，单独整理成一组。三张图采用宠物插画，画面保留宠物日常的样子。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "宠物疫苗主题的三张配图",
+          "body": "疫苗这个项目，单独整理成一组。三张图采用宠物插画，画面保留宠物日常的样子。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "宠物疫苗主题的三张配图",
+          "body": "这一组对应宠物疫苗主题，三张宠物插画放在一起，作为项目分类的配图。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "疫苗主题，单独放一条",
+          "body": "一组宠物日常小画，放在疫苗主题下面。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-vaccine-02",
+      "serviceType": "vaccine",
+      "serviceName": "疫苗",
+      "title": "这一条，留给疫苗主题",
+      "body": "一组宠物小画，归在疫苗主题下。图片用于区分图文内容，没有对应某次接种或具体疫苗安排。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "这一条，留给疫苗主题",
+          "body": "一组宠物小画，归在疫苗主题下。图片用于区分图文内容，没有对应某次接种或具体疫苗安排。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "这一条，留给疫苗主题",
+          "body": "疫苗主题配图，共三张。画面采用宠物日常插画，不是实际接种照片，也不包含接种安排。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "这批配图，主题是疫苗",
+          "body": "三张宠物插画作疫苗主题配图，画面不对应某次接种。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-vaccine-03",
+      "serviceType": "vaccine",
+      "serviceName": "疫苗",
+      "title": "把疫苗主题放进相册",
+      "body": "三张画里都是宠物日常。这一组对应疫苗主题，图片与项目名称放在一起，单独看这一项。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "把疫苗主题放进相册",
+          "body": "三张画里都是宠物日常。这一组对应疫苗主题，图片与项目名称放在一起，单独看这一项。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "把疫苗主题放进相册",
+          "body": "本组以宠物疫苗为图文主题，搭配三张宠物插画，仅作项目主题说明。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "给疫苗主题换一组小画",
+          "body": "图片保持宠物日常的样子，图文归到疫苗这一项。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-checkup-01",
+      "serviceType": "checkup",
+      "serviceName": "体检",
+      "title": "体检主题，用插画来配图",
+      "body": "把宠物体检作为这一组的主题，配上三张宠物插画。画面呈现日常形象，保留原本的插画风格。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "体检主题，用插画来配图",
+          "body": "把宠物体检作为这一组的主题，配上三张宠物插画。画面呈现日常形象，保留原本的插画风格。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "体检主题，用插画来配图",
+          "body": "这组三张宠物插画用于体检主题配图，画面展示宠物日常，未包含检查结果。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "体检主题，配上三张小画",
+          "body": "这一批围绕宠物体检，用宠物插画作主题配图。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-checkup-02",
+      "serviceType": "checkup",
+      "serviceName": "体检",
+      "title": "这三张，归在体检主题里",
+      "body": "宠物体检单独放一条，配图采用宠物日常插画。图片只作主题配图，不是检查现场或体检报告。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "这三张，归在体检主题里",
+          "body": "宠物体检单独放一条，配图采用宠物日常插画。图片只作主题配图，不是检查现场或体检报告。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "这三张，归在体检主题里",
+          "body": "本组为宠物体检主题插画，共三张，不对应某次实际检查，也不展示体检报告。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "三张宠物小画，归到体检里",
+          "body": "体检是这一条的服务主题，画面是宠物日常插画。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-checkup-03",
+      "serviceType": "checkup",
+      "serviceName": "体检",
+      "title": "宠物体检的一组主题配图",
+      "body": "宠物日常也可以按服务主题整理。这组放在体检项目下，图片采用插画，没有医学结论或检查数值。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "宠物体检的一组主题配图",
+          "body": "宠物日常也可以按服务主题整理。这组放在体检项目下，图片采用插画，没有医学结论或检查数值。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "宠物体检的一组主题配图",
+          "body": "宠物体检主题配图，使用三张日常插画区分项目，内容不包含医学结论或检查数值。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "换一批，看看体检主题配图",
+          "body": "三张插画放在一起，对应宠物体检这一项。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-deworm-01",
+      "serviceType": "deworm",
+      "serviceName": "驱虫",
+      "title": "驱虫主题，配一组宠物小画",
+      "body": "这一条按驱虫主题整理。三张宠物插画放在一起，只作主题配图，不对应具体用药或一次驱虫操作。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "驱虫主题，配一组宠物小画",
+          "body": "这一条按驱虫主题整理。三张宠物插画放在一起，只作主题配图，不对应具体用药或一次驱虫操作。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "驱虫主题，配一组宠物小画",
+          "body": "本组对应宠物驱虫主题，三张图片为宠物日常插画，没有展示实际用药或操作。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "驱虫主题，单独配三张",
+          "body": "这组采用宠物日常插画，归在驱虫这一项下面。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-deworm-02",
+      "serviceType": "deworm",
+      "serviceName": "驱虫",
+      "title": "宠物驱虫的一组配图",
+      "body": "把驱虫这个项目单独列出来，配上宠物日常的小画。药物、剂量和使用情况没有写进这组图文。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "宠物驱虫的一组配图",
+          "body": "把驱虫这个项目单独列出来，配上宠物日常的小画。药物、剂量和使用情况没有写进这组图文。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "宠物驱虫的一组配图",
+          "body": "驱虫主题配图，共三张宠物插画。内容仅作主题说明，不提供具体药物、剂量或使用建议。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "三张宠物小画，放进驱虫主题",
+          "body": "这一条对应宠物驱虫，图片只用来表达主题。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-deworm-03",
+      "serviceType": "deworm",
+      "serviceName": "驱虫",
+      "title": "这次整理的是驱虫主题",
+      "body": "三张插画保持宠物日常的样子，图文主题选的是驱虫。这组不展示实际操作，也不以图片说明驱虫效果。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "这次整理的是驱虫主题",
+          "body": "三张插画保持宠物日常的样子，图文主题选的是驱虫。这组不展示实际操作，也不以图片说明驱虫效果。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "这次整理的是驱虫主题",
+          "body": "本组三图采用宠物插画，服务主题为驱虫，不作为实际操作或效果记录。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "换一组驱虫主题的小画",
+          "body": "服务主题选驱虫，画面保留宠物日常，不展示用药或效果。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-consult-01",
+      "serviceType": "consult",
+      "serviceName": "诊疗",
+      "title": "宠物诊疗主题配图",
+      "body": "这一组对应宠物诊疗主题，配图采用宠物日常插画。画面只作主题展示，没有写入具体病例或治疗结果。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "宠物诊疗主题配图",
+          "body": "这一组对应宠物诊疗主题，配图采用宠物日常插画。画面只作主题展示，没有写入具体病例或治疗结果。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "宠物诊疗主题配图",
+          "body": "本组为宠物诊疗主题的三张插画配图，不对应真实病例，也不展示治疗结果。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "诊疗主题，先看这组配图",
+          "body": "三张宠物插画归在诊疗主题下，画面不对应具体病例。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-consult-02",
+      "serviceType": "consult",
+      "serviceName": "诊疗",
+      "title": "诊疗主题，配一组小画",
+      "body": "把宠物诊疗单独整理一条，三张图选用宠物插画。图片保持日常场景，文案只写这组的服务主题。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "诊疗主题，配一组小画",
+          "body": "把宠物诊疗单独整理一条，三张图选用宠物插画。图片保持日常场景，文案只写这组的服务主题。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "诊疗主题，配一组小画",
+          "body": "三张宠物日常插画用作诊疗主题配图，图文内容仅为项目主题说明。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "给诊疗主题换三张小画",
+          "body": "这一条的主题是宠物诊疗，配图采用宠物日常插画。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-consult-03",
+      "serviceType": "consult",
+      "serviceName": "诊疗",
+      "title": "这组图，归在宠物诊疗下面",
+      "body": "画面里的宠物属于插画创作，这一条对应诊疗主题。具体病例、诊断和结果没有放进这组主题配图里。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "这组图，归在宠物诊疗下面",
+          "body": "画面里的宠物属于插画创作，这一条对应诊疗主题。具体病例、诊断和结果没有放进这组主题配图里。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "这组图，归在宠物诊疗下面",
+          "body": "本组插画以宠物诊疗为图文主题，内容不包含病例、诊断信息或治疗效果记录。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "换一批，仍是诊疗主题",
+          "body": "图片来自宠物插画创作，这一组用于诊疗主题配图。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-bath-01",
+      "serviceType": "bath",
+      "serviceName": "洗澡",
+      "title": "洗澡主题的三张宠物小画",
+      "body": "这一组的主题是宠物洗澡。三张画放在一起，保留宠物日常的插画风格，用作洗澡项目的主题配图。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "洗澡主题的三张宠物小画",
+          "body": "这一组的主题是宠物洗澡。三张画放在一起，保留宠物日常的插画风格，用作洗澡项目的主题配图。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "洗澡主题的三张宠物小画",
+          "body": "本组三张宠物日常插画对应洗澡主题，图片用于项目主题展示。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "洗澡主题，三张小画一组",
+          "body": "把三张宠物插画放在一起，归到洗澡这一项。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-bath-02",
+      "serviceType": "bath",
+      "serviceName": "洗澡",
+      "title": "给洗澡主题换一组配图",
+      "body": "宠物洗澡单独放一条，这次配的是三张宠物小画。图片为插画创作，不作为某次洗澡过程或洗护结果记录。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "给洗澡主题换一组配图",
+          "body": "宠物洗澡单独放一条，这次配的是三张宠物小画。图片为插画创作，不作为某次洗澡过程或洗护结果记录。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "给洗澡主题换一组配图",
+          "body": "三张宠物插画作洗澡主题配图，不对应实际到店过程，也不作为洗护结果记录。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "换一批洗澡主题的配图",
+          "body": "这一组配的是宠物小画，主题放在洗澡项目下面。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    },
+    {
+      "id": "aidog-review-theme-bath-03",
+      "serviceType": "bath",
+      "serviceName": "洗澡",
+      "title": "这批图，讲的是洗澡主题",
+      "body": "把三张宠物插画配成一组，放在洗澡主题下面。图片各自保留原来的样子，文案只作服务主题说明。\n\n配图为AI示意图，非到店实拍。",
+      "contentType": "service_theme_illustration",
+      "platforms": {
+        "dianping": {
+          "title": "这批图，讲的是洗澡主题",
+          "body": "把三张宠物插画配成一组，放在洗澡主题下面。图片各自保留原来的样子，文案只作服务主题说明。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "meituan": {
+          "title": "这批图，讲的是洗澡主题",
+          "body": "本组图文的主题为宠物洗澡，配图采用三张宠物插画，仅作主题说明。\n\n配图为AI示意图，非到店实拍。"
+        },
+        "douyin": {
+          "title": "这三张，归在洗澡主题里",
+          "body": "画面保留宠物日常的样子，三张合成一组主题配图。\n\n配图为AI示意图，非到店实拍。"
+        }
+      }
+    }
+  ]
+}
