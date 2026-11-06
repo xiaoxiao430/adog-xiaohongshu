@@ -21,10 +21,10 @@ verify-example.mjs                     本地语法、接口合同与页面生�
 这是 `.xhsml/.css` 小红书工程，未使用微信的 WXML/WXSS，也没有第三方发布 SDK。官方组件为内置组件，不需要 `usingComponents` 下载包。
 
 1. 登录[官方平台](https://miniapp.xiaohongshu.com/)，先创建自己的**测试小程序**并取得测试 AppID，用于开发者手机内部验证。官方沙盒允许免审核测试，正式主体、类目及备案流程可以并行；实际账号的可用入口以控制台为准。测试小程序不能向普通顾客分发。[沙盒介绍](https://miniapp.xiaohongshu.com/doc/DC204112)及[上传与预览说明](https://miniapp.xiaohongshu.com/doc/DC483845)。用自己的 AppID 在官方 IDE 建项目，并选择基础库 **2.0 架构**编译。
-2. 官方 IDE 会生成 `project.config.json`。本目录不虚构它的 AppID 字段或编译选项。把 `example/` 中的应用文件复制到新项目，保留 IDE 生成的配置；也可在项目根目录运行以下合并命令，得到独立新目录：
+2. 官方 IDE 会生成 `project.config.json`。本目录不虚构它的 AppID 字段或编译选项。把 `example/` 中的应用文件复制到新项目，保留 IDE 生成的配置；也可先切换到**包含本 README 的目录**，运行以下合并命令，得到独立新目录：
 
    ```sh
-   node integrations/xiaohongshu-miniapp/scripts/prepare-ide-project.mjs \
+   node scripts/prepare-ide-project.mjs \
      --project /绝对路径/官方IDE已创建的项目 \
      --out /绝对路径/新的爱多格小程序目录 \
      --app-id 自己的公开AppID \
@@ -74,8 +74,10 @@ API Bearer仅在内存，不放二维码、图片链接、日志或本地存储�
 
 ## 本地验证和字体
 
+在包含本 README 的目录执行：
+
 ```sh
-node integrations/xiaohongshu-miniapp/verify-example.mjs
+node verify-example.mjs
 ```
 
 本地测试覆盖原生请求头、双库隔离、首屏配稿、同图轮稿、改稿恢复、续租、失效/丢响应、退出中止、官方媒体 JSON、禁用身份状态和 IDE 配置合并。测试使用 `.invalid` 合成地址，不访问线上库存或小红书；它不能替代官方编译、真机取图、原生编辑器预填或最终发布。
