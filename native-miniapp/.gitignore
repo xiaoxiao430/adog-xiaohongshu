@@ -1,0 +1,6 @@
+# Official IDE creates these for the store's real application.
+example/project.config.json
+example/project.private.config.json
+example/.idea/
+example/.vscode/
+example/node_modules/

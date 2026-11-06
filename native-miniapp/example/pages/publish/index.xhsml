@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="header">
+    <view class="brand"><image class="logo" src="/assets/adog-logo.png" mode="aspectFit"></image><text>小红书图文</text></view>
+    <button class="home" bindtap="goHome">回到首页</button>
+  </view>
+  <view xhs:if="{{error}}" class="notice error">{{error}}</view>
+  <view xhs:if="{{pack}}" class="card">
+    <view class="section-head"><text class="label">本批照片 · {{pack.materials.length}}张</text><button class="text-button" bindtap="nextPack" disabled="{{busy}}">换一批图文</button></view>
+    <view class="photos"><image xhs:for="{{pack.materials}}" xhs:key="id" class="photo" src="{{item.url}}" mode="aspectFit" data-index="{{index}}" bindtap="previewPhoto"></image></view>
+    <view class="section-head copy-head"><text class="label">对应文案 <text class="count">{{variant}}/{{variantCount}}</text></text><button xhs:if="{{variantCount > 1}}" class="text-button" bindtap="anotherCopy" disabled="{{busy}}">换文案</button></view>
+    <input class="title-input" value="{{draft.title}}" bindinput="onTitleInput" maxlength="-1" placeholder="标题，可直接修改"></input>
+    <textarea class="body-input" value="{{draft.body}}" bindinput="onBodyInput" maxlength="-1" placeholder="正文，可直接修改"></textarea>
+    <view class="copy-foot"><text>按自己的真实经历修改</text><text>{{draft.title.length}}/20 · {{draft.body.length}}/1000</text></view>
+    <view xhs:if="{{draftError}}" class="notice error">{{draftError}}</view>
+    <view class="publish-area">
+      <post-note-button xhs:if="{{nativeEnabled && publisher && !busy}}"
+        type="default" size="large"
+        title="{{publisher.title}}" content="{{publisher.content}}" media-info="{{publisher.mediaInfo}}"
+        miniapp-session-info="{{sessionInfo}}" binderror="onPostError"
+      />
+      <button xhs:else class="publish-disabled" disabled="true">{{busy ? '正在读取图文…' : (!nativeEnabled ? '去发布（待门店开通）' : '请先刷新或检查文案')}}</button>
+      <button class="refresh" bindtap="refreshPublisher" disabled="{{busy}}">刷新本批</button>
+    </view>
+    <view class="small-note">进入小红书编辑页后，由你确认并发布。AI辅助整理的内容请按平台要求声明。</view>
+  </view>
+  <view xhs:if="{{!pack}}" class="empty card">
+    <image class="xhs-logo" src="/assets/xhs.jpg" mode="aspectFit"></image>
+    <view>{{busy ? '正在读取门店图文…' : '暂时没有可用图文'}}</view>
+    <button xhs:if="{{!busy}}" class="retry" bindtap="start">重新读取</button>
+  </view>
+  <view xhs:if="{{hint}}" class="notice">{{hint}}</view>
+  <view xhs:if="{{!nativeEnabled}}" class="small-note pending">门店尚未完成自己的小程序发布权限验证，当前不能进入原生发布页。</view>
+</view>
