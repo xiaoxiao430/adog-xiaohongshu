@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>爱多格图片分享</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <img class="brand" src="./assets/adog-logo.png" alt="爱多格">
+      <button class="home" id="home" type="button">← 返回首页</button>
+    </header>
+    <section aria-labelledby="photo-heading">
+      <div class="row"><h1 id="photo-heading">小红书图文</h1><button id="save" class="secondary" type="button">保存3张照片</button></div>
+      <div class="photos" id="photos" aria-label="本组3张图片"></div>
+      <p class="hint">AI示意图，非到店实拍。</p>
+    </section>
+    <section class="copy" aria-labelledby="copy-heading">
+      <div class="row"><h2 id="copy-heading">对应文案</h2><button id="next" class="secondary" type="button">换一句</button></div>
+      <label for="title" class="sr-only">笔记标题</label>
+      <input id="title" type="text" maxlength="20" aria-describedby="counts">
+      <label for="content" class="sr-only">笔记正文</label>
+      <textarea id="content" maxlength="1000" rows="5" aria-describedby="counts"></textarea>
+      <p class="hint" id="counts"></p>
+    </section>
+    <button class="publish" id="publish" type="button">去小红书发布</button>
+    <p class="notice" id="notice" role="status" aria-live="polite"></p>
+    <div class="recovery" id="recovery" hidden>
+      <p id="recovery-text"></p>
+      <button class="secondary" id="resume" type="button" hidden>已返回本页，恢复操作</button>
+      <button class="secondary" id="saved-yes" type="button" hidden>已核对，这张已保存</button>
+      <button class="secondary" id="saved-no" type="button" hidden>已核对，这张未保存</button>
+    </div>
+    <p class="footnote">带入图文后可继续修改，由你确认发布。</p>
+  </main>
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
