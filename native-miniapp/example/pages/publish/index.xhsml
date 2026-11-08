@@ -18,7 +18,7 @@
         title="{{publisher.title}}" content="{{publisher.content}}" media-info="{{publisher.mediaInfo}}"
         miniapp-session-info="{{sessionInfo}}" binderror="onPostError"
       />
-      <button xhs:else class="publish-disabled" disabled="true">{{busy ? '正在读取图文…' : (!nativeEnabled ? '去发布（待门店开通）' : '请先刷新或检查文案')}}</button>
+      <button xhs:else class="publish-disabled" disabled="true">{{busy ? '正在读取图文…' : (!nativeEnabled ? '去发布（待接通）' : '请先刷新或检查文案')}}</button>
       <button class="refresh" bindtap="refreshPublisher" disabled="{{busy}}">刷新本批</button>
     </view>
     <view class="small-note">进入小红书编辑页后，由你确认并发布。AI辅助整理的内容请按平台要求声明。</view>
@@ -29,5 +29,5 @@
     <button xhs:if="{{!busy}}" class="retry" bindtap="start">重新读取</button>
   </view>
   <view xhs:if="{{hint}}" class="notice">{{hint}}</view>
-  <view xhs:if="{{!nativeEnabled}}" class="small-note pending">门店尚未完成自己的小程序发布权限验证，当前不能进入原生发布页。</view>
+  <view xhs:if="{{!nativeEnabled}}" class="small-note pending">当前尚未接通小红书原生编辑页。</view>
 </view>
