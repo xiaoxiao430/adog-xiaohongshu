@@ -97,3 +97,29 @@ node verify-example.mjs
 - [主体、类目与接入流程](https://miniapp.xiaohongshu.com/doc/DC137160)
 
 小程序能力与旧网页分享 SDK 是不同产品。此工程只使用公开官方组件，不使用未公开 Scheme、他人 AppID 或自动代发。
+
+## 站外URL Link请求准备（2026-11-08）
+
+`scripts/prepare-url-link-request.mjs`只校验并输出**脱敏请求准备记录**，不联网、不生成链接、不刷新凭证、不改`officialReady`。目前没有可执行的`create-url-link.mjs`生成器，不能把准备完成当成微信入口已接通。
+
+已确认的官方合同：
+
+- [调用凭证](https://miniapp.xiaohongshu.com/doc/DC010382)：`POST https://miniapp.xiaohongshu.com/api/rmp/token`，JSON body字段是`appid`和`secret`；响应为`data.access_token`及`expire_in`。新凭证会缩短旧凭证有效期，所以准备操作不会尝试获取凭证。
+- [URL Link](https://miniapp.xiaohongshu.com/doc/DC274658)：`POST https://miniapp.xiaohongshu.com/api/rmp/url`；业务参数为`page_url`及可选`expire_interval`。默认页面`pages/publish/index`，不以`/`开头，路径含query最多1024字符；有效期不填默认365天，显式填写只接受1至365天。只允许短批次标识等路由参数，不将图片、成稿或凭据放入query。
+- 该URL Link页列出公共参数`app_id`和`access_token`，但未明确其放在query、header还是body；[API简介](https://miniapp.xiaohongshu.com/doc/DC853803)仅说明POST body采用JSON，没有补齐此处。不能套用其他接口的`appid`query表，不能将小工具OAuth、其他AppID或自造deep link充作官方入口。因此当前明确保留`ready_to_send:false`、`link_generated:false`。
+
+后续取得自己的小程序配置并确认上述鉴权传输合同后，再实现真正生成器。只有实际官方成功响应中的URL才能登记为`link_generated`；生成链接仍不代表微信拉起、Android/iOS或原生编辑器已验证。
+
+配置只读取进程环境变量`XHS_MINIAPP_APP_ID`以及`XHS_MINIAPP_ACCESS_TOKEN`或`XHS_MINIAPP_APP_SECRET`，也可显式提供项目外、权限0600的私有JSON文件，字段为`app_id`以及`access_token`或`app_secret`。不扫描、复制现有小工具配置，不接受命令行凭据，不把配置写入本目录。环境变量优先。不要把真实凭据写进终端历史或仓库。
+
+在包含本README的目录运行；以下路径是待自行配置的私有位置，并不是已存在的凭据：
+
+```sh
+node scripts/prepare-url-link-request.mjs \
+  --config /绝对私有目录/miniapp.json \
+  --query batch=group-3 --expire-days 14 \
+  --out /绝对私有目录/url-link-preparation.json
+node tests/url-link-contract.mjs
+```
+
+`--out`只保存脱敏准备记录，权限0600且不覆盖旧文件；不是官方链接。缺少配置明确退出，所有分支均不联网。七项本地检查覆盖已确认端点及字段、1024边界、短query与有效期、缺配置、业务失败不误报、凭据不泄露、私有文件权限与无网络调用。敏感query字段，以及误放在普通字段中的当前凭据（包括URL编码形式），均在写出前拒绝；只用虚构夹具，不表示平台生成或真机验证通过。
