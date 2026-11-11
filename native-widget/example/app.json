@@ -1,0 +1,10 @@
+{
+  "pages": ["pages/publish/index"],
+  "window": {
+    "navigationBarTitleText": "爱多格·小红书图文",
+    "navigationBarBackgroundColor": "#fffdf8",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fffdf8"
+  },
+  "networkTimeout": { "request": 15000, "downloadFile": 30000 }
+}

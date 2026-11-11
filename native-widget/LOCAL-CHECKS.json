@@ -1,0 +1,96 @@
+{
+  "checkedAt": "2026-11-11T09:03:20.047Z",
+  "kind": "networked-widget-source",
+  "sourceBytes": 327039,
+  "sourceFiles": 12,
+  "localChecks": 100,
+  "sourceConfig": {
+    "ownAppId": "",
+    "enablePostNoteButton": false
+  },
+  "font": {
+    "family": "Microsoft YaHei",
+    "currentUiAnd20CopyGlyphsMissing": 0,
+    "embeddedFontMatchesAuditSource": true,
+    "standaloneWoff2Uploaded": false,
+    "runtimeFontVerified": false
+  },
+  "officialIdeMetadataAvailable": false,
+  "officialIdeCompiled": false,
+  "nativeDeviceVerified": false,
+  "wechatEntryVerified": false,
+  "productionRequestsMade": false,
+  "uploaded": false,
+  "published": false,
+  "officialReadyChanged": false,
+  "files": [
+    {
+      "path": "app.css",
+      "bytes": 200731,
+      "sha256": "c49c5df81537da9e75b4c9097e703e3c96ac0a2147fd85d21072745ad9418343"
+    },
+    {
+      "path": "app.js",
+      "bytes": 9,
+      "sha256": "1ab645c73bcea61604f9cc4805a752ab9ba8fb66813d8c57cad34328c0ce4109"
+    },
+    {
+      "path": "app.json",
+      "bytes": 302,
+      "sha256": "e3da666408f0c0bcc64652c2e3df0bcf55b07615e7110f7aad9d68c3b5865678"
+    },
+    {
+      "path": "assets/adog-logo.png",
+      "bytes": 87091,
+      "sha256": "95e6b82b7cdec3086ffa1f2afc8a301102d4b71729c0dd4796250a73560aed9d"
+    },
+    {
+      "path": "assets/xhs.jpg",
+      "bytes": 19031,
+      "sha256": "1be60d078eb201a9ae06f64a444a12af8b271385011e81751e7607980266f4e2"
+    },
+    {
+      "path": "config.js",
+      "bytes": 391,
+      "sha256": "bdcf04e04f4ca7ecb5997807889707782fb67b03c2447d4bc1495452b1394d5b"
+    },
+    {
+      "path": "lib/api.js",
+      "bytes": 2919,
+      "sha256": "007b4796403864fcc04ab13180dd427cd148a903123b28b2203ed57fd58ae334"
+    },
+    {
+      "path": "lib/publisher.js",
+      "bytes": 2211,
+      "sha256": "4ddcc948ae7a216316c0e302a4af131c69343e70976bc6fb37b86a822f04c60c"
+    },
+    {
+      "path": "pages/publish/index.css",
+      "bytes": 2582,
+      "sha256": "7079eaa02934346c4510261329e067b903dd4d012b807df70c54cd91fbfa396a"
+    },
+    {
+      "path": "pages/publish/index.js",
+      "bytes": 8933,
+      "sha256": "8e1fce8895d39b5664aa961fafbdeaba1d43caa2bf8d1822ba145b8cf8074f0c"
+    },
+    {
+      "path": "pages/publish/index.json",
+      "bytes": 61,
+      "sha256": "f290859d03b85ebff9f2f99faeff58dac2d4d98cb4379c68c5ff2d1ff6cef21d"
+    },
+    {
+      "path": "pages/publish/index.xhsml",
+      "bytes": 2778,
+      "sha256": "40812e29000a55c4f108b03273020d321362bd8a7a04d6d575b5498a59cc6978"
+    }
+  ],
+  "sharePrivacy": {
+    "fixedPublicLogoCover": true,
+    "shareChatExternalImageUrlExplicit": true,
+    "copyUrlExternalImageUrlExplicit": true,
+    "inAppImageUrlExplicit": true,
+    "coverIndependentOfDraftPhotoAndSession": true,
+    "runtimeClientBehaviorVerified": false
+  }
+}
