@@ -1,4 +1,4 @@
-const config = require('../config');
+import config from '../config.js';
 let guestToken = '';
 const active = [];
 
@@ -46,7 +46,7 @@ function bootstrap() {
   });
 }
 
-module.exports = {
+export default {
   bootstrap: bootstrap,
   start: function (options) {
     options = options || {};

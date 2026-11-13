@@ -7,11 +7,36 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
+if (typeof vm.SourceTextModule !== 'function') {
+  execFileSync(process.execPath, ['--experimental-vm-modules', fileURLToPath(import.meta.url)], { stdio: 'inherit' });
+  process.exit(0);
+}
 const root = new URL('./example/', import.meta.url);
 let checks = 0;
 function check(value, message) { assert.ok(value, message); checks++; }
 function equal(value, expected, message) { assert.deepEqual(JSON.parse(JSON.stringify(value)), expected, message); checks++; }
 const text = file => readFile(new URL(file, root), 'utf8');
+async function loadEsm(file, globals = {}, overrides = {}) {
+  const context = vm.createContext(globals), cache = new Map();
+  assert(!('require' in context) && !('module' in context), 'ESM检查环境不提供CommonJS全局桩');
+  const replacements = new Map(Object.entries(overrides).map(([name, value]) => [new URL(name, root).href, value]));
+  async function load(url) {
+    if (cache.has(url.href)) return cache.get(url.href);
+    assert(url.href.startsWith(root.href), '模块只能从本工程加载');
+    const module = replacements.has(url.href)
+      ? new vm.SyntheticModule(['default'], function () { this.setExport('default', replacements.get(url.href)); }, { context, identifier: url.href })
+      : new vm.SourceTextModule(await readFile(url, 'utf8'), { context, identifier: url.href });
+    cache.set(url.href, module);
+    return module;
+  }
+  const entry = await load(new URL(file, root));
+  await entry.link((specifier, parent) => {
+    assert(specifier.startsWith('.') && specifier.endsWith('.js'), '真实编译器要求相对ESM导入显式.js扩展名');
+    return load(new URL(specifier, parent.identifier));
+  });
+  await entry.evaluate();
+  return entry.namespace;
+}
 const files = [];
 async function walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
@@ -22,7 +47,7 @@ async function walk(dir) {
 await walk(root);
 for (const file of files) {
   if (file.pathname.endsWith('.json')) { JSON.parse(await readFile(file, 'utf8')); checks++; }
-  if (file.pathname.endsWith('.js')) { new vm.Script(await readFile(file, 'utf8'), { filename: fileURLToPath(file) }); checks++; }
+  if (file.pathname.endsWith('.js')) { new vm.SourceTextModule(await readFile(file, 'utf8'), { identifier: file.href }); checks++; }
 }
 check(!files.some(file => /\.(wxml|wxss)$/.test(file.pathname)), '必须使用官方XHSML/CSS扩展名');
 const app = JSON.parse(await text('app.json'));
@@ -41,10 +66,9 @@ check(!/取图码|专属码|服务选择|agreement|agreed|preparePublisher|保�
 check(template.includes('bindtap="goHome"') && template.includes('回到首页'), '明显回到首页');
 check(template.includes('mode="aspectFit"') && !template.includes('mode="aspectFill"'), '保持原图及其说明不裁切');
 check(template.includes('nativeEnabled && publisher && !busy'), '身份和图文状态共同控制真实组件');
-const configModule = { exports: {} };
-vm.runInNewContext(await text('config.js'), { module: configModule });
-check(configModule.exports.apiBase === 'https://jmryqyx.cn/aidog-share', '使用爱多格现有真实服务入口');
-check(configModule.exports.ownAppId === '' && configModule.exports.enablePostNoteButton === false, '没有AppID时发布默认禁用');
+const config = (await loadEsm('config.js')).default;
+check(config.apiBase === 'https://jmryqyx.cn/aidog-share', '使用爱多格现有真实服务入口');
+check(config.ownAppId === '' && config.enablePostNoteButton === false, '没有AppID时发布默认禁用');
 const css = await text('app.css');
 const font = await readFile(new URL('./resources/yahei-ui.woff2', import.meta.url));
 check(font.subarray(0, 4).toString() === 'wOF2', '审计副本是真实WOFF2文件');
@@ -62,10 +86,9 @@ check(!/\/consume|share-receipt|packages\/next|unlock|serviceType|albumId|consol
 let pendingApi = null;
 let nextApiResponse = null;
 const calls = [], aborted = [];
-const apiModule = { exports: {} };
 const fakeBearer = 'a'.repeat(64);
-vm.runInNewContext(apiSource, {
-  module: apiModule, require: () => configModule.exports, Promise, Error,
+const api = (await loadEsm('lib/api.js', {
+  Promise, Error,
   xhs: { request(options) {
     calls.push(options);
     const task = { abort() { aborted.push(options.url); options.fail({ errMsg: 'abort' }); } };
@@ -78,29 +101,26 @@ vm.runInNewContext(apiSource, {
     });
     return task;
   } },
-});
-await apiModule.exports.bootstrap();
-await apiModule.exports.start({ currentId: 'one', next: true, skip: Array.from({ length: 60 }, (_, i) => 'seen-' + i), serviceType: 'vaccine', channel: 'reviews', albumId: 'PRIVATE' });
+})).default;
+await api.bootstrap();
+await api.start({ currentId: 'one', next: true, skip: Array.from({ length: 60 }, (_, i) => 'seen-' + i), serviceType: 'vaccine', channel: 'reviews', albumId: 'PRIVATE' });
 check(calls[0].url.endsWith('/api/bootstrap?client=miniapp') && !calls[0].header.Authorization, '原生游客初始化');
 check(calls[1].url.endsWith('/api/quick-share/start') && calls[1].header.Authorization === 'Bearer ' + fakeBearer, '同一游客Bearer取批次');
 equal(calls[1].data, { channel: 'xhs', platform: 'xhs', currentId: 'one', next: true, skip: Array.from({ length: 50 }, (_, i) => 'seen-' + (i + 10)) }, '请求固定XHS双库scope且限定浏览记录');
 check(calls.every(c => !c.url.includes(fakeBearer) && !c.header.Cookie && !c.header.Origin && !c.header.Referer), 'Bearer不入URL，不伪造浏览器头');
 nextApiResponse = { statusCode: 401, data: { ok: false, error: '会话过期' } };
-await assert.rejects(apiModule.exports.start(), /会话过期/); checks++;
+await assert.rejects(api.start(), /会话过期/); checks++;
 const countAfter401 = calls.length;
-await apiModule.exports.start();
+await api.start();
 check(calls.length === countAfter401 + 2 && calls[countAfter401].url.includes('bootstrap'), '401清除内存令牌，下次明确重试先重新初始化');
 check(!calls[countAfter401].header.Authorization, '重新初始化不携带失效令牌');
 nextApiResponse = 'pending';
-const cancelResult = apiModule.exports.start().catch(error => error.message);
+const cancelResult = api.start().catch(error => error.message);
 await new Promise(resolve => setImmediate(resolve));
-apiModule.exports.cancel();
+api.cancel();
 check((await cancelResult).includes('无法连接') && aborted.length === 1 && pendingApi, '退出终止真实RequestTask');
 
-const publisherSource = await text('lib/publisher.js');
-const publisherModule = { exports: {} };
-vm.runInNewContext(publisherSource, { module: publisherModule, Error, String, Array, JSON });
-const publisher = publisherModule.exports;
+const publisher = (await loadEsm('lib/publisher.js', { Error, String, Array, JSON })).default;
 const clock = { now: 1800000000000 };
 function fixture(id = 'one') {
   return {
@@ -111,11 +131,31 @@ function fixture(id = 'one') {
   };
 }
 function result(id = 'one') { return { pack: fixture(id), platformCopies: { xhs: [{ id: id + '-copy-a', title: id + '第一稿', body: '等了二十分钟，狗狗叫豆豆。不满意的地方保留。' }, { id: id + '-copy-b', title: id + '第二稿', body: '不强加赞美，也不补写疗效。' }] } }; }
+let enabledDefinition;
+const enabledRequests = [];
+await loadEsm('pages/publish/index.js', {
+  Page: definition => { enabledDefinition = definition; }, Promise, Error, Date: { now: () => clock.now }, Math, Number, Array, JSON,
+  setTimeout: () => 1, clearTimeout: () => {},
+  xhs: { request(options) {
+    enabledRequests.push(options);
+    queueMicrotask(() => options.success({ statusCode: 200, data: options.url.includes('bootstrap')
+      ? { ok: true, guestToken: fakeBearer, capabilities: { packages: true } }
+      : { ok: true, ...result() } }));
+    return { abort() {} };
+  } },
+}, { 'config.js': { ...config, ownAppId: 'LOCAL_TEST_APP_ID', enablePostNoteButton: true } });
+const enabledPage = { ...enabledDefinition, data: structuredClone(enabledDefinition.data) };
+enabledPage.setData = patch => { enabledPage.data = { ...enabledPage.data, ...patch }; };
+enabledPage.onLoad();
+for (let i = 0; i < 5; i++) await new Promise(resolve => setImmediate(resolve));
+check(enabledPage.data.nativeEnabled === true && enabledPage.data.pack.id === 'one' && enabledPage.data.publisher.title === 'one第一稿' && !enabledPage.data.error, '无require/module的真实ESM模块图可执行onLoad，启用配置后不再停留默认false状态');
+check(enabledRequests.length === 2 && enabledRequests[0].url.endsWith('/api/bootstrap?client=miniapp') && enabledRequests[1].url.endsWith('/api/quick-share/start') && enabledRequests[1].header.Authorization === 'Bearer ' + fakeBearer, 'ESM页面通过真实api/publisher模块完成游客初始化及三图配稿请求');
+enabledPage.onUnload();
 const validPack = fixture();
 const payload = publisher.data(validPack, { title: '', body: '' });
 equal(JSON.parse(payload.mediaInfo), { image_resources: validPack.materials.map(p => ({ url: p.url })) }, '媒体参数是JSON字符串且保持3图顺序');
 check(payload.title === '' && payload.content === '', '允许顾客删空选填文字，不自动补写');
-check(!publisher.enabled(configModule.exports), '无身份不启用原生组件');
+check(!publisher.enabled(config), '无身份不启用原生组件');
 check(!publisher.enabled({ ownAppId: 'YOUR_APP_ID', enablePostNoteButton: true }), '占位AppID不能开通');
 check(publisher.enabled({ ownAppId: 'LOCAL_TEST_APP_ID', enablePostNoteButton: true }), '仅明确配置的身份进入原生待验证线路');
 for (const bad of [
@@ -144,13 +184,12 @@ const mockApi = {
     return Promise.resolve(structuredClone(response));
   },
 };
-vm.runInNewContext(await text('pages/publish/index.js'), {
-  require: name => name.endsWith('/api') ? mockApi : name.endsWith('/publisher') ? publisher : configModule.exports,
+await loadEsm('pages/publish/index.js', {
   Page: value => { pageDefinition = value; }, Promise, Error, Date: { now: () => clock.now }, Math, Number, Array, JSON,
   setTimeout: (callback, delay) => { const id = ++timerSequence; timers.set(id, { callback, delay }); return id; },
   clearTimeout: id => timers.delete(id),
   xhs: { previewImage: options => previews.push(options), pageScrollTo: options => scrolls.push(options) },
-});
+}, { 'lib/api.js': mockApi, 'lib/publisher.js': publisher, 'config.js': config });
 const page = { ...pageDefinition, data: structuredClone(pageDefinition.data) };
 page.setData = patch => { page.data = { ...page.data, ...patch }; };
 const settle = async () => { for (let i = 0; i < 5; i++) await new Promise(resolve => setImmediate(resolve)); };

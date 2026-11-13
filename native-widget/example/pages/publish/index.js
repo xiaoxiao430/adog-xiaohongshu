@@ -1,6 +1,6 @@
-const api = require('../../lib/api');
-const publisher = require('../../lib/publisher');
-const config = require('../../config');
+import api from '../../lib/api.js';
+import publisher from '../../lib/publisher.js';
+import config from '../../config.js';
 const shareCover = 'https://xiaoxiao430.github.io/adog-xiaohongshu/share/brand/adog-logo.png';
 
 function deadline(pack) {

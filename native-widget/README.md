@@ -2,9 +2,11 @@
 
 本目录采用官方小组件框架，以`xhs.request`连接现有爱多格共享图库。单页直接显示当前一批3—5张照片及配稿，可换批、同图轮稿、修改，再由`post-note-button`带入顾客自己账号的原生编辑页。界面沿用紧凑蓝粉、原Logo与微软雅黑。
 
-当前交付是可供官方IDE导入的应用源文件。`ownAppId`为空、`enablePostNoteButton`为`false`；还没有真实小组件IDE元数据、官方编译或手机验证。没有登记、上传、发布或修改线上`officialReady`。取得自己实际的小组件AppID和IDE工程后再启用内部预览。
+仓库提供可供官方IDE导入的应用源文件，复用模板的`ownAppId`仍为空、`enablePostNoteButton`仍为`false`。爱多格的实际自有小组件工程已创建，并完成官方编译；当前仍在核对运行环境和手机发布链路。尚未上传或发布本次代码，也未修改线上`officialReady`。模板的空身份与禁用状态不代表爱多格仍缺少WidgetID。
 
 ## 结构与配置
+
+当前源码的`config/api/publisher/page`采用ES module的`import/export`，所有相对导入显式带`.js`。这是针对实际IDE 2.0编译产物出现`require is not defined`及`fully specified`报错的兼容修复；官方require文档仍列出CommonJS支持，不将此修复说成平台一律只支持ESM。本地验证使用真实ESM模块链接且不提供`require/module`全局，验证脚本会按需启用Node的实验性VM模块；实际成效以IDE重新编译为准。
 
 ```text
 example/                              可复制到官方小组件工程的应用文件
@@ -33,7 +35,7 @@ node scripts/prepare-ide-project.mjs \
   --enable-native-preview
 ```
 
-脚本拒绝覆盖源目录、官方原工程或已有输出。不传AppID和预览标记时保留空身份及禁用状态；预览标记必须同时提供AppID，并且只改新输出目录。它不能授予平台权限，也不代表验收。官方IDE需核对项目类型、实际AppID、2.0架构编译和基础库；当前使用`miniapp-session-info`，按基础库3.120.x及以上验收，同时满足组件文档IDE≥2.3.1、客户端≥8.53要求。[组件合同](https://miniapp.xiaohongshu.com/doc/DC530301)
+脚本拒绝覆盖源目录、官方原工程或已有输出。不传AppID和预览标记时保留空身份及禁用状态；预览标记必须同时提供AppID，并且只改新输出目录。它不能授予平台权限，也不代表验收。官方IDE需核对项目类型、实际AppID、2.0架构编译和基础库；组件的`miniapp-session-info`最低要求为基础库3.120.x；整个工程还定义了`onShareChat/onCopyUrl`，因此须使用基础库≥3.150.0及客户端≥9.25验收。已在实际3.133.1运行库中确认这两个方法会阻止页面创建，官方3.150.0／3.151.0基库已解除这两项限制；不能只按session字段的最低版本配置整个工程。同时满足组件文档IDE≥2.3.1要求。[组件合同](https://miniapp.xiaohongshu.com/doc/DC530301)
 
 ## 共享图库与恢复
 

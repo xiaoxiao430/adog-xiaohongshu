@@ -36,4 +36,4 @@ function enabled(config) {
   return !!config && typeof config.ownAppId === 'string' && !!config.ownAppId.trim() && !/YOUR_|PLACEHOLDER|EXAMPLE/i.test(config.ownAppId) && config.enablePostNoteButton === true;
 }
 
-module.exports = { validatePack: validatePack, copies: copies, data: data, enabled: enabled };
+export default { validatePack: validatePack, copies: copies, data: data, enabled: enabled };
