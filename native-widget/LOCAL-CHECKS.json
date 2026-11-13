@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-11-13T07:32:00.293Z",
+  "checkedAt": "2026-11-13T10:09:32.547735+00:00",
   "kind": "networked-widget-source",
-  "sourceBytes": 327025,
+  "sourceBytes": 329109,
   "sourceFiles": 12,
-  "localChecks": 102,
+  "localChecks": 112,
   "sourceConfig": {
     "ownAppId": "",
     "enablePostNoteButton": false
@@ -26,8 +26,8 @@
   "files": [
     {
       "path": "app.css",
-      "bytes": 200731,
-      "sha256": "c49c5df81537da9e75b4c9097e703e3c96ac0a2147fd85d21072745ad9418343"
+      "bytes": 201047,
+      "sha256": "3e7680fbb1202fa7af039009a65bf5d80422da43bc2fb4ed5e25479c45ad6dc6"
     },
     {
       "path": "app.js",
@@ -71,8 +71,8 @@
     },
     {
       "path": "pages/publish/index.js",
-      "bytes": 8927,
-      "sha256": "42fc737b71304489713690efc59d1fbc3724772ea72dd2455b9c721b7a13f7a0"
+      "bytes": 10491,
+      "sha256": "a4a711be19cafea0abd1d5c74ab0a41b553ca1fb4642fe34820a85a12997c849"
     },
     {
       "path": "pages/publish/index.json",
@@ -81,8 +81,8 @@
     },
     {
       "path": "pages/publish/index.xhsml",
-      "bytes": 2778,
-      "sha256": "40812e29000a55c4f108b03273020d321362bd8a7a04d6d575b5498a59cc6978"
+      "bytes": 2982,
+      "sha256": "efc82bc259f39a1f6962804d93e30f026c6cb2a964ef0165b87b00302816a94b"
     }
   ],
   "sharePrivacy": {
@@ -100,5 +100,15 @@
     "configuredPageOnLoadAndApiVerifiedLocally": true,
     "officialIdeRecompileRequired": true,
     "reason": "Actual desktop IDE 2.0 preset reported require is not defined and fully-specified import errors"
+  },
+  "imageLoading": {
+    "firstScreenLazyLoadDisabled": true,
+    "fixedChineseErrorWithoutNativeDetails": true,
+    "errorsTrackedPerImage": true,
+    "batchAndRefreshEpochsRejectLateEvents": true,
+    "refreshRemountsImageNodes": true,
+    "draftRetainedAcrossFailureAndRefresh": true,
+    "imageLoadDoesNotRecordDelivery": true,
+    "revisedSourceOfficialIdeRecompileRequired": true
   }
 }

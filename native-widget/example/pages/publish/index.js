@@ -2,6 +2,7 @@ import api from '../../lib/api.js';
 import publisher from '../../lib/publisher.js';
 import config from '../../config.js';
 const shareCover = 'https://xiaoxiao430.github.io/adog-xiaohongshu/share/brand/adog-logo.png';
+const photoError = '照片暂时无法显示，请刷新本批重试';
 
 function deadline(pack) {
   if (!pack || pack.status !== 'reserved') return 0;
@@ -12,7 +13,7 @@ function value(event) { return event && event.detail && typeof event.detail.valu
 
 Page({
   data: {
-    busy: false, error: '', hint: '', pack: null,
+    busy: false, error: '', hint: '', pack: null, photos: [], imageError: '',
     draft: { title: '', body: '' }, variant: 1, variantCount: 0,
     nativeEnabled: false, leaseValid: false, draftError: '',
     publisher: null, sessionInfo: null,
@@ -21,6 +22,8 @@ Page({
     this._alive = true;
     this._foreground = true;
     this._epoch = 0;
+    this._photoEpoch = 0;
+    this._photoErrors = {};
     this._seen = [];
     this._drafts = {};
     this._copies = [];
@@ -80,6 +83,8 @@ Page({
     if (!copies.length) throw new Error('这批图片尚未配好文案，请联系店员。');
     this.rememberDraft();
     const pack = result.pack;
+    const photoEpoch = ++this._photoEpoch;
+    this._photoErrors = {};
     const saved = this._drafts[pack.id];
     this._leaseUncertain = false;
     this._copies = copies;
@@ -89,6 +94,10 @@ Page({
     if (this._seen.indexOf(pack.id) < 0) this._seen.push(pack.id);
     this.update({
       pack: pack, draft: { title: draft.title, body: draft.body },
+      // A fresh node for each refresh keeps late native-image events on their old epoch.
+      photos: pack.materials.map(function (photo, index) {
+        return { url: photo.url, batchId: pack.id, epoch: photoEpoch, renderKey: photoEpoch + '-' + index };
+      }), imageError: '',
       variant: this._variant + 1, variantCount: copies.length,
       hint: result.sameAsCurrent ? '暂无下一批，仍保留当前图文。' : '',
     });
@@ -112,11 +121,13 @@ Page({
   fetchPack: function (kind) {
     if (!this._alive || this.data.busy) return Promise.resolve();
     const epoch = ++this._epoch;
+    this._photoEpoch++;
+    this._photoErrors = {};
     const current = this.data.pack;
     this.clearLease();
     // A lost response may already have moved the server lease. Verify again before publishing.
     this._leaseUncertain = !!current;
-    this.update({ busy: true, error: '', hint: '' });
+    this.update({ busy: true, error: '', hint: '', imageError: '' });
     let failed = false;
     const options = current ? { currentId: current.id } : {};
     if (kind === 'next') { options.next = true; options.skip = this._seen; }
@@ -160,6 +171,26 @@ Page({
   onBodyInput: function (event) {
     this.update({ draft: { title: this.data.draft.title, body: value(event) } });
     this.rememberDraft(); this.applyPublisher();
+  },
+  photoEventIndex: function (event) {
+    if (!this._alive || !this.data.pack) return -1;
+    const data = event && event.currentTarget && event.currentTarget.dataset || {};
+    const index = Number(data.index), epoch = Number(data.epoch);
+    if (data.batch !== this.data.pack.id || epoch !== this._photoEpoch || !Number.isInteger(index) || index < 0 || index >= this.data.photos.length) return -1;
+    return this.data.photos[index].epoch === epoch ? index : -1;
+  },
+  onPhotoError: function (event) {
+    const index = this.photoEventIndex(event);
+    if (index < 0) return;
+    this._photoErrors[index] = true;
+    // Native errors can contain signed URLs. Show only a fixed customer message.
+    this.update({ imageError: photoError });
+  },
+  onPhotoLoad: function (event) {
+    const index = this.photoEventIndex(event);
+    if (index < 0) return;
+    delete this._photoErrors[index];
+    this.update({ imageError: Object.keys(this._photoErrors).length ? photoError : '' });
   },
   previewPhoto: function (event) {
     if (!this.data.pack || typeof xhs.previewImage !== 'function') return;

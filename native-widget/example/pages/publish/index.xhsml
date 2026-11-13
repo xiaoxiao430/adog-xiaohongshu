@@ -6,7 +6,8 @@
   <view xhs:if="{{error}}" class="notice error">{{error}}</view>
   <view xhs:if="{{pack}}" class="card">
     <view class="section-head"><text class="label">本批照片 · {{pack.materials.length}}张</text><button class="text-button" bindtap="nextPack" disabled="{{busy}}">换一批图文</button></view>
-    <view class="photos"><image xhs:for="{{pack.materials}}" xhs:key="id" class="photo" src="{{item.url}}" mode="aspectFit" data-index="{{index}}" bindtap="previewPhoto"></image></view>
+    <view class="photos"><image xhs:for="{{photos}}" xhs:key="renderKey" class="photo" src="{{item.url}}" mode="aspectFit" lazy-load="{{false}}" data-index="{{index}}" data-batch="{{item.batchId}}" data-epoch="{{item.epoch}}" bindtap="previewPhoto" binderror="onPhotoError" bindload="onPhotoLoad"></image></view>
+    <view xhs:if="{{imageError}}" class="notice error">{{imageError}}</view>
     <view class="section-head copy-head"><text class="label">对应文案 <text class="count">{{variant}}/{{variantCount}}</text></text><button xhs:if="{{variantCount > 1}}" class="text-button" bindtap="anotherCopy" disabled="{{busy}}">换文案</button></view>
     <input class="title-input" value="{{draft.title}}" bindinput="onTitleInput" maxlength="-1" placeholder="标题，可直接修改"></input>
     <textarea class="body-input" value="{{draft.body}}" bindinput="onBodyInput" maxlength="-1" placeholder="正文，可直接修改"></textarea>
