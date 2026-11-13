@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-11-13T10:09:32.547735+00:00",
+  "checkedAt": "2026-11-13T11:01:20.710364+00:00",
   "kind": "networked-widget-source",
-  "sourceBytes": 329109,
+  "sourceBytes": 333173,
   "sourceFiles": 12,
-  "localChecks": 112,
+  "localChecks": 126,
   "sourceConfig": {
     "ownAppId": "",
     "enablePostNoteButton": false
@@ -26,8 +26,8 @@
   "files": [
     {
       "path": "app.css",
-      "bytes": 201047,
-      "sha256": "3e7680fbb1202fa7af039009a65bf5d80422da43bc2fb4ed5e25479c45ad6dc6"
+      "bytes": 201967,
+      "sha256": "35a389e25899ec9d0194e3b9b86dbe854c506ceb386e576aafb5df4c357940dc"
     },
     {
       "path": "app.js",
@@ -56,8 +56,8 @@
     },
     {
       "path": "lib/api.js",
-      "bytes": 2915,
-      "sha256": "ec4571809f13ccef4f2afb820773dc91f95766a0c4fb2f521b727eaa3fe127d1"
+      "bytes": 3149,
+      "sha256": "eee5c533086ba215bc8a163328de82e041a25a46e998f6d57e924f3ae991c579"
     },
     {
       "path": "lib/publisher.js",
@@ -71,8 +71,8 @@
     },
     {
       "path": "pages/publish/index.js",
-      "bytes": 10491,
-      "sha256": "a4a711be19cafea0abd1d5c74ab0a41b553ca1fb4642fe34820a85a12997c849"
+      "bytes": 13186,
+      "sha256": "743a88d1503ec08cff29e9161c1402bc31615e79cb463aa897efb824dbd79176"
     },
     {
       "path": "pages/publish/index.json",
@@ -81,8 +81,8 @@
     },
     {
       "path": "pages/publish/index.xhsml",
-      "bytes": 2982,
-      "sha256": "efc82bc259f39a1f6962804d93e30f026c6cb2a964ef0165b87b00302816a94b"
+      "bytes": 3197,
+      "sha256": "dddda6628f5bd4de0d55be9dc507a5e46bddee520009906f8b6c6f2b99d5ec2f"
     }
   ],
   "sharePrivacy": {
@@ -110,5 +110,26 @@
     "draftRetainedAcrossFailureAndRefresh": true,
     "imageLoadDoesNotRecordDelivery": true,
     "revisedSourceOfficialIdeRecompileRequired": true
+  },
+  "nativePreparation": {
+    "authenticatedServerSnapshotRequired": true,
+    "sessionInfoKeys": [
+      "attemptId"
+    ],
+    "draftDebounceMs": 350,
+    "normalWaitMessage": "正在准备图文…",
+    "trustedServerAppIdRequired": true,
+    "leaseAndDraftMustMatch": true,
+    "lateSuccessAndFailureIgnored": true,
+    "failureRetainsDraftAndExistingRefreshRetry": true,
+    "preparationDoesNotChangeInventoryOrPublishState": true,
+    "serverIsolatedChecks": 21,
+    "existingNativeTransportChecks": 7,
+    "newMigration": "0006_native_publish_attempts.sql",
+    "serverConfig": "XHS_WIDGET_APP_ID",
+    "serverFeatureDeployed": false,
+    "callbackEnvelopeOrCustomFieldGuessed": false,
+    "realCallbackVerified": false,
+    "late401OnlyInvalidatesItsOwnSentToken": true
   }
 }

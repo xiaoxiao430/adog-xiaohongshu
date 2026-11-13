@@ -13,9 +13,10 @@ function request(path, data, authenticated) {
     validateApi();
     if (typeof xhs === 'undefined' || typeof xhs.request !== 'function') return reject(new Error('请在小红书小组件中打开。'));
     const header = { 'content-type': 'application/json' };
+    const sentToken = authenticated ? guestToken : '';
     if (authenticated) {
-      if (!guestToken) return reject(new Error('顾客会话已失效，请重新进入页面。'));
-      header.Authorization = 'Bearer ' + guestToken;
+      if (!sentToken) return reject(new Error('顾客会话已失效，请重新进入页面。'));
+      header.Authorization = 'Bearer ' + sentToken;
     }
     let task, completed = false;
     function remove() { const index = active.indexOf(task); if (index >= 0) active.splice(index, 1); }
@@ -26,7 +27,7 @@ function request(path, data, authenticated) {
       success: function (res) {
         completed = true; remove();
         if (res.statusCode >= 200 && res.statusCode < 300 && res.data && res.data.ok === true) return resolve(res.data);
-        if (res.statusCode === 401) guestToken = '';
+        if (res.statusCode === 401 && guestToken === sentToken) guestToken = '';
         reject(new Error((res.data && res.data.error) || '请求未完成，请稍后重试。'));
       },
       fail: function () { completed = true; remove(); reject(new Error('暂时无法连接图库，当前图文已保留。')); },
@@ -57,6 +58,9 @@ export default {
     return (guestToken ? Promise.resolve() : bootstrap()).then(function () {
       return request('/api/quick-share/start', data, true);
     });
+  },
+  nativeAttempt: function (packageId, data) {
+    return request('/api/packages/' + encodeURIComponent(packageId) + '/native-attempt', data, true);
   },
   cancel: function () { active.splice(0).forEach(function (task) { task.abort(); }); },
 };

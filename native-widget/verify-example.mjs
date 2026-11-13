@@ -67,6 +67,7 @@ check(template.includes('bindtap="goHome"') && template.includes('回到首页')
 check(template.includes('mode="aspectFit"') && !template.includes('mode="aspectFill"'), '保持原图及其说明不裁切');
 check(/class="photo"[^>]*lazy-load="\{\{false\}\}"[^>]*binderror="onPhotoError"[^>]*bindload="onPhotoLoad"/.test(template), '首屏照片不等待懒加载，实际绑定官方加载和错误事件');
 check(template.includes('nativeEnabled && publisher && !busy'), '身份和图文状态共同控制真实组件');
+check(template.includes("prepareBusy ? '正在准备图文…'") && !template.includes('请先刷新或检查文案'), '准备正常等待时明确自动处理，不误导顾客增加刷新步骤');
 const config = (await loadEsm('config.js')).default;
 check(config.apiBase === 'https://jmryqyx.cn/aidog-share', '使用爱多格现有真实服务入口');
 check(config.ownAppId === '' && config.enablePostNoteButton === false, '没有AppID时发布默认禁用');
@@ -121,8 +122,24 @@ await new Promise(resolve => setImmediate(resolve));
 api.cancel();
 check((await cancelResult).includes('无法连接') && aborted.length === 1 && pendingApi, '退出终止真实RequestTask');
 
+nextApiResponse = 'pending';
+const oldAttempt401 = api.nativeAttempt('old-batch', { requestKey: 'old-request-key', copyId: 'old-copy', title: '旧稿', body: '旧稿正文' }).catch(error => error.message);
+const oldAttemptRequest = pendingApi;
+nextApiResponse = { statusCode: 401, data: { ok: false, error: '旧会话刷新过期' } };
+const oldRefreshError = await api.start({ currentId: 'old-batch' }).catch(error => error.message);
+const newFakeBearer = 'b'.repeat(64);
+nextApiResponse = { statusCode: 200, data: { ok: true, guestToken: newFakeBearer, capabilities: { packages: true } } };
+await api.start();
+check(oldAttemptRequest.header.Authorization === 'Bearer ' + fakeBearer && oldRefreshError === '旧会话刷新过期' && calls.at(-2).url.includes('bootstrap') && !calls.at(-2).header.Authorization && calls.at(-1).header.Authorization === 'Bearer ' + newFakeBearer, '旧A准备挂起时刷新401，下一批重新初始化并实际携带新游客B令牌');
+oldAttemptRequest.success({ statusCode: 401, data: { ok: false, error: '旧准备请求过期' } });
+const oldAttemptError = await oldAttempt401;
+const requestsBeforeCurrentDraft = calls.length;
+await api.nativeAttempt('new-batch', { requestKey: 'new-request-key', copyId: 'new-copy', title: '新稿', body: '新稿正文' });
+check(oldAttemptError === '旧准备请求过期' && calls.length === requestsBeforeCurrentDraft + 1 && calls.at(-1).url.endsWith('/api/packages/new-batch/native-attempt') && calls.at(-1).header.Authorization === 'Bearer ' + newFakeBearer, '旧A准备迟到401不清除B，后续新批改稿仍使用B正常请求');
+
 const publisher = (await loadEsm('lib/publisher.js', { Error, String, Array, JSON })).default;
 const clock = { now: 1800000000000 };
+const testWidgetId = '6af4316b0f9096000187043d';
 function fixture(id = 'one') {
   return {
     id, channel: 'xhs', serviceType: 'general', status: 'reserved', reservedByMe: true,
@@ -136,21 +153,24 @@ let enabledDefinition;
 const enabledRequests = [];
 await loadEsm('pages/publish/index.js', {
   Page: definition => { enabledDefinition = definition; }, Promise, Error, Date: { now: () => clock.now }, Math, Number, Array, JSON,
-  setTimeout: () => 1, clearTimeout: () => {},
+  setTimeout: (callback, delay) => { if (delay === 350) queueMicrotask(callback); return 1; }, clearTimeout: () => {},
   xhs: { request(options) {
     enabledRequests.push(options);
-    queueMicrotask(() => options.success({ statusCode: 200, data: options.url.includes('bootstrap')
+    queueMicrotask(() => options.success({ statusCode: 200, data: options.url.endsWith('/native-attempt')
+      ? { ok: true, attemptId: '12345678-1234-4234-8234-123456789abc', status: 'prepared', appId: testWidgetId, validUntil: clock.now + 900000 }
+      : options.url.includes('bootstrap')
       ? { ok: true, guestToken: fakeBearer, capabilities: { packages: true } }
       : { ok: true, ...result() } }));
     return { abort() {} };
   } },
-}, { 'config.js': { ...config, ownAppId: 'LOCAL_TEST_APP_ID', enablePostNoteButton: true } });
+}, { 'config.js': { ...config, ownAppId: testWidgetId, enablePostNoteButton: true } });
 const enabledPage = { ...enabledDefinition, data: structuredClone(enabledDefinition.data) };
 enabledPage.setData = patch => { enabledPage.data = { ...enabledPage.data, ...patch }; };
 enabledPage.onLoad();
 for (let i = 0; i < 5; i++) await new Promise(resolve => setImmediate(resolve));
 check(enabledPage.data.nativeEnabled === true && enabledPage.data.pack.id === 'one' && enabledPage.data.publisher.title === 'one第一稿' && !enabledPage.data.error, '无require/module的真实ESM模块图可执行onLoad，启用配置后不再停留默认false状态');
-check(enabledRequests.length === 2 && enabledRequests[0].url.endsWith('/api/bootstrap?client=miniapp') && enabledRequests[1].url.endsWith('/api/quick-share/start') && enabledRequests[1].header.Authorization === 'Bearer ' + fakeBearer, 'ESM页面通过真实api/publisher模块完成游客初始化及三图配稿请求');
+check(enabledRequests.length === 3 && enabledRequests[0].url.endsWith('/api/bootstrap?client=miniapp') && enabledRequests[1].url.endsWith('/api/quick-share/start') && enabledRequests[1].header.Authorization === 'Bearer ' + fakeBearer && enabledRequests[2].url.endsWith('/api/packages/one/native-attempt') && enabledRequests[2].header.Authorization === 'Bearer ' + fakeBearer, 'ESM页面通过真实api/publisher模块完成游客初始化、三图配稿和已认证准备请求');
+equal(enabledPage.data.sessionInfo, { attemptId: '12345678-1234-4234-8234-123456789abc' }, '组件仅携带服务端准备编号，不传客户端批次或追踪字段');
 enabledPage.onUnload();
 const validPack = fixture();
 const payload = publisher.data(validPack, { title: '', body: '' });
@@ -174,6 +194,8 @@ let response = result();
 let pendingStart = null;
 let startCalls = [];
 let canceled = 0;
+let attemptSequence = 0, prepareResponse = null;
+const attemptCalls = [], pendingAttempts = [];
 const previews = [], scrolls = [], timers = new Map();
 let timerSequence = 0;
 const mockApi = {
@@ -184,21 +206,32 @@ const mockApi = {
     if (response instanceof Error) return Promise.reject(response);
     return Promise.resolve(structuredClone(response));
   },
+  nativeAttempt: (id, data) => {
+    attemptCalls.push({ id, data: structuredClone(data) });
+    const prepared = { attemptId: '12345678-1234-4234-8234-' + String(++attemptSequence).padStart(12, '0'), status: 'prepared', appId: testWidgetId, validUntil: clock.now + 900000 };
+    if (prepareResponse === 'pending') return new Promise((resolve, reject) => pendingAttempts.push({ resolve, reject, prepared }));
+    if (prepareResponse instanceof Error) return Promise.reject(prepareResponse);
+    return Promise.resolve(prepareResponse || prepared);
+  },
 };
 await loadEsm('pages/publish/index.js', {
   Page: value => { pageDefinition = value; }, Promise, Error, Date: { now: () => clock.now }, Math, Number, Array, JSON,
   setTimeout: (callback, delay) => { const id = ++timerSequence; timers.set(id, { callback, delay }); return id; },
   clearTimeout: id => timers.delete(id),
   xhs: { previewImage: options => previews.push(options), pageScrollTo: options => scrolls.push(options) },
-}, { 'lib/api.js': mockApi, 'lib/publisher.js': publisher, 'config.js': config });
+}, { 'lib/api.js': mockApi, 'lib/publisher.js': publisher, 'config.js': { ...config, ownAppId: testWidgetId, enablePostNoteButton: true } });
 const page = { ...pageDefinition, data: structuredClone(pageDefinition.data) };
 page.setData = patch => { page.data = { ...page.data, ...patch }; };
-const settle = async () => { for (let i = 0; i < 5; i++) await new Promise(resolve => setImmediate(resolve)); };
+const settle = async () => {
+  for (let i = 0; i < 5; i++) await new Promise(resolve => setImmediate(resolve));
+  for (const [id, timer] of [...timers]) if (timer.delay === 350) { timers.delete(id); timer.callback(); }
+  for (let i = 0; i < 5; i++) await new Promise(resolve => setImmediate(resolve));
+};
 page.onLoad(); await settle();
 check(page.data.pack.id === 'one' && page.data.draft.title === 'one第一稿', '首次游客直接显示本库三图和平台备稿，不用先选服务');
-check(page.data.variant === 1 && page.data.variantCount === 2 && !page.data.nativeEnabled, '首稿计数正确，身份仍待配置');
+check(page.data.variant === 1 && page.data.variantCount === 2 && page.data.nativeEnabled, '首稿计数正确，隔离配置启用当前发布准备链路');
 check(timers.size === 1 && [...timers.values()][0].delay === 840000, '预留到期前一分钟刷新');
-check(page.data.publisher && page.data.sessionInfo.packageId === 'one' && !JSON.stringify(page.data.sessionInfo).includes(fakeBearer), '媒体已准备，关联字段不含令牌');
+check(page.data.publisher && Object.keys(page.data.sessionInfo).join() === 'attemptId' && !JSON.stringify(page.data.sessionInfo).includes(fakeBearer), '媒体在服务端准备好后启用，组件只带不含令牌的准备编号');
 check(!('published' in page.data) && !('prepared' in page.data) && !('agreed' in page.data), '没有假成功或旧多步确认状态');
 function photoEvent(index, detail) {
   const photo = page.data.photos[index];
@@ -220,7 +253,7 @@ response = 'pending';
 const refreshingPhotos = page.refreshPublisher(); await settle();
 page.onPhotoError(firstImageEvent);
 check(page.data.busy && page.data.imageError === '' && JSON.stringify(page.data.draft) === draftBeforeImageFailure, '刷新开始清图片错误，刷新前的迟到错误不能污染等待状态');
-pendingStart(result('one')); await refreshingPhotos;
+pendingStart(result('one')); await refreshingPhotos; await settle();
 const refreshedImageEvent = photoEvent(0);
 page.onPhotoError(firstImageEvent);
 check(page.data.photos[0].epoch !== firstImageEvent.currentTarget.dataset.epoch && page.data.imageError === '' && JSON.stringify(page.data.draft) === draftBeforeImageFailure, '同批刷新重新创建图片节点，旧刷新错误不污染新照片且保留改稿');
@@ -230,6 +263,40 @@ check(page.data.imageError === imageErrorMessage, '旧刷新成功事件不能�
 page.onPhotoLoad(refreshedImageEvent);
 check(page.data.imageError === '' && startCalls.length === requestsBeforeImageFailure + 1, '新节点成功加载后恢复，仅明确刷新请求读取当前批次');
 response = result();
+const attemptsBeforeTyping = attemptCalls.length;
+page.onBodyInput({ detail: { value: '第一字' } });
+page.onBodyInput({ detail: { value: '第二字' } });
+page.onBodyInput({ detail: { value: '停下来后才准备这一版。' } });
+check(!page.data.publisher && !page.data.sessionInfo && page.data.prepareBusy && attemptCalls.length === attemptsBeforeTyping, '输入立即停用旧准备编号，短暂停顿前不逐字保存');
+await settle();
+check(attemptCalls.length === attemptsBeforeTyping + 1 && attemptCalls.at(-1).data.body === '停下来后才准备这一版。' && page.data.publisher.content === '停下来后才准备这一版。', '连续输入只准备最后当前稿，不增加顾客步骤');
+prepareResponse = 'pending';
+page.onBodyInput({ detail: { value: '旧稿仍在准备' } }); await settle();
+const olderDraftAttempt = pendingAttempts.shift();
+page.onBodyInput({ detail: { value: '这是新稿，旧响应不可覆盖。' } }); await settle();
+const currentDraftAttempt = pendingAttempts.shift();
+olderDraftAttempt.resolve(olderDraftAttempt.prepared); await settle();
+check(page.data.draft.body === '这是新稿，旧响应不可覆盖。' && !page.data.publisher && !page.data.sessionInfo, '旧稿准备迟到成功不能启用当前新稿按钮');
+currentDraftAttempt.resolve(currentDraftAttempt.prepared); await settle();
+check(page.data.publisher.content === page.data.draft.body && page.data.sessionInfo.attemptId === currentDraftAttempt.prepared.attemptId, '只有新稿自己的服务端准备编号可以启用对应图文');
+page.onBodyInput({ detail: { value: '这版准备随后会失败' } }); await settle();
+const olderFailure = pendingAttempts.shift();
+prepareResponse = null;
+page.onBodyInput({ detail: { value: '已准备好的最新稿。' } }); await settle();
+const latestAttemptId = page.data.sessionInfo.attemptId;
+olderFailure.reject(new Error('旧请求失败')); await settle();
+check(page.data.publisher.content === '已准备好的最新稿。' && page.data.sessionInfo.attemptId === latestAttemptId && !page.data.prepareError, '旧稿迟到失败不能撤销新稿已准备的按钮或显示旧错误');
+prepareResponse = new Error('准备暂时失败');
+page.onBodyInput({ detail: { value: '准备失败仍保留这一稿。' } }); await settle();
+check(!page.data.publisher && !page.data.sessionInfo && page.data.prepareError === '准备暂时失败' && page.data.draft.body === '准备失败仍保留这一稿。', '当前准备失败保留图文并禁用发布，不冒称已使用');
+prepareResponse = null;
+response = result('one'); await page.refreshPublisher(); await settle();
+check(page.data.publisher.content === '准备失败仍保留这一稿。' && page.data.sessionInfo.attemptId && !page.data.prepareError, '既有刷新入口可重新核实预留并准备当前稿，不要求重新输入');
+prepareResponse = { attemptId: '12345678-1234-4234-8234-123456789abc', status: 'prepared', appId: 'f'.repeat(24), validUntil: clock.now + 900000 };
+page.onBodyInput({ detail: { value: '服务端身份不匹配时仍保留。' } }); await settle();
+check(!page.data.publisher && !page.data.sessionInfo && page.data.prepareError.includes('未能核对'), '与自有WidgetID不匹配的准备响应不能启用原生按钮');
+prepareResponse = null;
+await page.refreshPublisher(); await settle();
 const firstPhotos = JSON.stringify(page.data.pack.materials), startCount = startCalls.length;
 page.onBodyInput({ detail: { value: '我等了二十分钟。豆豆不喜欢吹风，不能写成喜欢。' } });
 for (const method of ['onShareAppMessage', 'onShareChat', 'onCopyUrl']) {
@@ -253,12 +320,13 @@ page.data = originalState;
 equal(sharesAfterPrivateChanges, JSON.parse(JSON.stringify(sharesBeforePrivateChanges)), '替换本人改稿、原图签名及session后分享配置完全不变，封面仍只用公开Logo');
 page.anotherCopy();
 check(page.data.variant === 2 && page.data.draft.title === 'one第二稿', '换文案轮到下一条');
-check(startCalls.length === startCount && JSON.stringify(page.data.pack.materials) === firstPhotos, '换文案不联网、不动图片');
+check(startCalls.length === startCount && JSON.stringify(page.data.pack.materials) === firstPhotos, '换文案不重新取批、不动图片');
 page.anotherCopy();
 check(page.data.variant === 1 && page.data.draft.body.includes('不能写成喜欢'), '轮回恢复同图同稿的本人修改');
 page.onTitleInput({ detail: { value: '超'.repeat(21) } });
 check(page.data.draft.title.length === 21 && !page.data.publisher && page.data.draftError.includes('20'), '超长内容保留原文并阻止发布，不静默截断');
 page.onTitleInput({ detail: { value: '我改的标题' } });
+await settle();
 check(page.data.publisher.title === '我改的标题', '改正后恢复组件数据');
 response = { ...result(), sameAsCurrent: true };
 await page.nextPack();
@@ -266,8 +334,17 @@ check(page.data.pack.id === 'one' && page.data.draft.title === '我改的标题'
 equal(startCalls.at(-1), { currentId: 'one', next: true, skip: ['one'] }, '下一批传当前ID及浏览记录');
 response = result('two');
 const previousBatchImageEvent = photoEvent(0);
+prepareResponse = 'pending';
+page.onBodyInput({ detail: { value: '上一批尚在准备的稿。' } }); await settle();
+const previousBatchAttempt = pendingAttempts.shift();
 await page.nextPack();
 check(page.data.pack.id === 'two' && page.data.draft.title === 'two第一稿', '换批同时换对应第一稿，不串旧稿');
+previousBatchAttempt.resolve(previousBatchAttempt.prepared); await settle();
+check(page.data.pack.id === 'two' && !page.data.publisher && !page.data.sessionInfo, '旧批准备迟到成功不会给新批套用旧编号');
+const currentBatchAttempt = pendingAttempts.shift();
+currentBatchAttempt.resolve(currentBatchAttempt.prepared); await settle();
+check(page.data.publisher.title === 'two第一稿' && page.data.sessionInfo.attemptId === currentBatchAttempt.prepared.attemptId, '新批只使用自己的准备结果和对应文案');
+prepareResponse = null;
 page.onPhotoError(previousBatchImageEvent);
 check(page.data.imageError === '' && page.data.photos.every(photo => photo.batchId === 'two'), '换批后旧批图片事件不污染当前批');
 response = result('one');
@@ -284,6 +361,7 @@ await page.nextPack();
 check(page.data.pack.id === 'one' && page.data.draft.body.includes('不满意') && !page.data.publisher && !page.data.leaseValid, '换批响应丢失保留文字并要求核实当前预留');
 response = result('one');
 await page.refreshPublisher();
+await settle();
 check(page.data.publisher && page.data.leaseValid, '再次成功核实本批后恢复有效媒体');
 page.previewPhoto({ currentTarget: { dataset: { index: 1 } } });
 check(previews[0].current === page.data.pack.materials[1].url && previews[0].urls.length === 3, '点图预览三张原图');

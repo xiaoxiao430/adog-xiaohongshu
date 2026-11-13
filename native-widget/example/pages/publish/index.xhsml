@@ -13,13 +13,14 @@
     <textarea class="body-input" value="{{draft.body}}" bindinput="onBodyInput" maxlength="-1" placeholder="正文，可直接修改"></textarea>
     <view class="copy-foot"><text>按自己的真实经历修改</text><text>{{draft.title.length}}/20 · {{draft.body.length}}/1000</text></view>
     <view xhs:if="{{draftError}}" class="notice error">{{draftError}}</view>
+    <view xhs:if="{{prepareError}}" class="notice error">{{prepareError}}</view>
     <view class="publish-area">
       <post-note-button xhs:if="{{nativeEnabled && publisher && !busy}}"
         type="default" size="large"
         title="{{publisher.title}}" content="{{publisher.content}}" media-info="{{publisher.mediaInfo}}"
         miniapp-session-info="{{sessionInfo}}" binderror="onPostError"
       />
-      <button xhs:else class="publish-disabled" disabled="true">{{busy ? '正在读取图文…' : (!nativeEnabled ? '去发布（待接通）' : '请先刷新或检查文案')}}</button>
+      <button xhs:else class="publish-disabled" disabled="true">{{busy ? '正在读取图文…' : (!nativeEnabled ? '去发布（待接通）' : (prepareBusy ? '正在准备图文…' : (draftError ? '请检查文案' : ((prepareError || !leaseValid) ? '请刷新本批后重试' : '正在准备图文…'))))}}</button>
       <button class="refresh" bindtap="refreshPublisher" disabled="{{busy}}">刷新本批</button>
     </view>
     <view class="small-note">进入小红书编辑页后，由你确认并发布。AI辅助整理的内容请按平台要求声明。</view>

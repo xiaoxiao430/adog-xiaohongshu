@@ -16,7 +16,7 @@ Page({
     busy: false, error: '', hint: '', pack: null, photos: [], imageError: '',
     draft: { title: '', body: '' }, variant: 1, variantCount: 0,
     nativeEnabled: false, leaseValid: false, draftError: '',
-    publisher: null, sessionInfo: null,
+    publisher: null, sessionInfo: null, prepareBusy: false, prepareError: '',
   },
   onLoad: function () {
     this._alive = true;
@@ -24,6 +24,7 @@ Page({
     this._epoch = 0;
     this._photoEpoch = 0;
     this._photoErrors = {};
+    this._prepareEpoch = 0;
     this._seen = [];
     this._drafts = {};
     this._copies = [];
@@ -39,14 +40,32 @@ Page({
     if (deadline(this.data.pack) - Date.now() < 60000) this.refreshPublisher();
     else this.scheduleLease();
   },
-  onHide: function () { this._foreground = false; this.clearLease(); },
+  onHide: function () { this._foreground = false; this.clearLease(); this.clearPreparation(); },
   onUnload: function () {
     this._alive = false;
     this._epoch++;
+    this.clearPreparation();
     this.clearLease();
     api.cancel();
   },
   update: function (patch) { if (this._alive) this.setData(patch); },
+  clearPreparation: function () {
+    if (this._prepareTimer) clearTimeout(this._prepareTimer);
+    this._prepareTimer = null;
+    this._prepareEpoch++;
+    this._preparingKey = null;
+    this._prepared = null;
+    this.update({ publisher: null, sessionInfo: null, prepareBusy: false });
+  },
+  preparationKey: function () {
+    const pack = this.data.pack, copy = this._copies[this._variant];
+    if (!pack || !copy) return '';
+    return JSON.stringify([pack.id, pack.reservedUntil, copy.id, this.data.draft.title, this.data.draft.body,
+      pack.materials.map(function (photo) { return [photo.id, photo.url]; })]);
+  },
+  currentPreparation: function (epoch, key) {
+    return this._alive && this._foreground && !this.data.busy && epoch === this._prepareEpoch && key === this.preparationKey();
+  },
   clearLease: function () { if (this._leaseTimer) clearTimeout(this._leaseTimer); this._leaseTimer = null; },
   scheduleLease: function (retry) {
     this.clearLease();
@@ -105,18 +124,41 @@ Page({
   },
   applyPublisher: function () {
     const pack = this.data.pack;
-    const valid = !!pack && !this._leaseUncertain && (pack.usedByMe === true || deadline(pack) > Date.now());
+    const valid = !!pack && !this._leaseUncertain && pack.reservedByMe === true && deadline(pack) > Date.now();
     let payload = null, error = '';
     try { if (pack) payload = publisher.data(pack, this.data.draft); }
     catch (reason) { error = reason.message; }
-    const copy = this._copies[this._variant];
-    this.update({
-      leaseValid: valid, draftError: error,
-      publisher: valid && !error ? payload : null,
-      // Correlation hints only. The server must authenticate the official event.
-      // No bearer, reservation key, private grant or invented success claim.
-      sessionInfo: pack ? { packageId: pack.id, copyId: copy ? copy.id : '', clientTraceId: this._trace } : null,
-    });
+    this.update({ leaseValid: valid, draftError: error });
+    if (!valid || error || !this.data.nativeEnabled || this.data.busy || !this._foreground) { this.clearPreparation(); return; }
+    const key = this.preparationKey();
+    if (this._prepared && this._prepared.key === key && this._prepared.validUntil > Date.now()) {
+      // This ID only identifies a prepared server snapshot, never a publication receipt.
+      this.update({ publisher: payload, sessionInfo: { attemptId: this._prepared.attemptId }, prepareBusy: false, prepareError: '' });
+      return;
+    }
+    if (this._preparingKey === key) return;
+    this.clearPreparation();
+    const epoch = this._prepareEpoch, copy = this._copies[this._variant];
+    this._preparingKey = key;
+    this.update({ prepareBusy: true, prepareError: '' });
+    // Wait for a brief pause in editing; keep the usual one-button customer flow.
+    this._prepareTimer = setTimeout(() => {
+      this._prepareTimer = null;
+      if (!this.currentPreparation(epoch, key)) return;
+      api.nativeAttempt(pack.id, { requestKey: this._trace + '-' + epoch, copyId: copy.id, title: payload.title, body: payload.content }).then((result) => {
+        if (!this.currentPreparation(epoch, key)) return;
+        if (!result || result.status !== 'prepared' || result.appId !== config.ownAppId || !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(result.attemptId || '') || typeof result.validUntil !== 'number' || !Number.isFinite(result.validUntil) || result.validUntil <= Date.now()) {
+          throw new Error('发布准备信息未能核对，请刷新本批重试。');
+        }
+        this._prepared = { key: key, attemptId: result.attemptId, validUntil: Number(result.validUntil) };
+        this._preparingKey = null;
+        this.applyPublisher();
+      }).catch((reason) => {
+        if (!this.currentPreparation(epoch, key)) return;
+        this._preparingKey = null;
+        this.update({ publisher: null, sessionInfo: null, prepareBusy: false, prepareError: reason.message || '发布准备暂时未完成，请刷新本批重试。' });
+      });
+    }, 350);
   },
   fetchPack: function (kind) {
     if (!this._alive || this.data.busy) return Promise.resolve();
@@ -127,7 +169,8 @@ Page({
     this.clearLease();
     // A lost response may already have moved the server lease. Verify again before publishing.
     this._leaseUncertain = !!current;
-    this.update({ busy: true, error: '', hint: '', imageError: '' });
+    this.clearPreparation();
+    this.update({ busy: true, error: '', hint: '', imageError: '', prepareError: '' });
     let failed = false;
     const options = current ? { currentId: current.id } : {};
     if (kind === 'next') { options.next = true; options.skip = this._seen; }
@@ -150,6 +193,7 @@ Page({
     }).finally(() => {
       if (!this._alive || epoch !== this._epoch) return;
       this.update({ busy: false });
+      this.applyPublisher();
       this.scheduleLease(failed);
     });
   },
