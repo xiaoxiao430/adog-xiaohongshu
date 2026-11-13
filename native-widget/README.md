@@ -2,15 +2,17 @@
 
 本目录采用官方小组件框架，以`xhs.request`连接现有爱多格共享图库。单页直接显示当前一批3—5张照片及配稿，可换批、同图轮稿、修改，再由`post-note-button`带入顾客自己账号的原生编辑页。界面沿用紧凑蓝粉、原Logo与微软雅黑。
 
-仓库提供可供官方IDE导入的应用源文件，复用模板的`ownAppId`仍为空、`enablePostNoteButton`仍为`false`。爱多格实际自有的小组件工程已创建，在基础库3.151.0上完成官方编译，模拟器已显示共享图库三张照片、对应文案和原生发布按钮；内部预览已打包并生成官方测试码。
+仓库提供可供官方IDE导入的应用源文件，复用模板的`ownAppId`仍为空、`enablePostNoteButton`仍为`false`。爱多格实际自有的小组件工程使用基础库3.151.0，已显示共享图库三张照片、对应文案和原生发布按钮；此前0.1.0已完成内部预览打包并生成官方测试码。
 
-官方内部开发版本`0.1.0`已上传，并已设置为扫码体验版本；该体验入口仅供创建者和体验者使用。该版本是此前完成图片显示修复的版本，不含本轮服务端准备记录、推送加解密和收件接口改动。当前尚未提审或正式发布；此前内部预览测试码已交付，手机是否能将三图及当前稿件带入原生编辑页、微信顾客入口是否完整，仍待实测。
+官方内部开发版本`0.1.0`已上传，并已设置为扫码体验版本；该体验入口仅供创建者和体验者使用。当前体验版仍是此前完成图片显示修复的版本，尚未换入调用准备接口、仅传`attemptId`的新版客户端源码。当前尚未提审或正式发布；此前内部预览测试码已交付，手机是否能将三图及当前稿件带入原生编辑页、微信顾客入口是否完整，仍待实测。
 
-本轮工作区候选代码已补齐发布前快照和推送收件，尚未部署或重新上传官方开发版，也未替换当前手机预览工程或修改线上`officialReady`。源码中的新接口不会自动更新现有网页和图库后台。模板的空身份与禁用状态不代表爱多格仍缺少WidgetID。
+Studio v9后端已部署，0006、0007增量迁移及三项运行配置已完成；部署前后核对保留原42张图片、14批图文及已有使用记录，R2图片字节未变化。官方平台已接受本小组件的消息推送配置。新版0.1.1的13个公开应用文件已更新到实际自有GUI工程，原始项目配置字节不变，并已通过官方本地编译；0.1.1已通过官方打包上传，IDE显示“上传成功”，开放平台开发版本卡片已核对到0.1.1；官方扫码体验版本仍为0.1.0，线上`officialReady`仍未修改。模板的空身份与禁用状态不代表爱多格仍缺少WidgetID。
+
+本次在官方IDE实际渲染页面核对，原生`XHS-POST-NOTE-BUTTON`已就绪，session仅含`attemptId`；三张媒体的URL及顺序与页面三图一致，标题9字、正文71字。只读后台核对同一准备记录的标题正文哈希、图片顺序及归属全部一致，记录仍为`prepared`、批次仍为`reserved`，未写入已用或下载日期，也未生成发布记录；推送收件数为0。这确认了真实发布按钮和服务端快照相符，手机原生编辑页的实际预填仍待验证。
 
 ## 结构与配置
 
-当前源码的`config/api/publisher/page`采用ES module的`import/export`，所有相对导入显式带`.js`。这是针对实际IDE 2.0编译产物出现`require is not defined`及`fully specified`报错的兼容修复；官方require文档仍列出CommonJS支持，不将此修复说成平台一律只支持ESM。本地验证使用真实ESM模块链接且不提供`require/module`全局，验证脚本会按需启用Node的实验性VM模块；实际成效以IDE重新编译为准。
+当前源码的`config/api/publisher/page`采用ES module的`import/export`，所有相对导入显式带`.js`。这是针对实际IDE 2.0编译产物出现`require is not defined`及`fully specified`报错的兼容修复；官方require文档仍列出CommonJS支持，不将此修复说成平台一律只支持ESM。本地验证使用真实ESM模块链接且不提供`require/module`全局，验证脚本会按需启用Node的实验性VM模块；新版0.1.1已在实际IDE重新编译通过。
 
 ```text
 example/                              可复制到官方小组件工程的应用文件
@@ -45,6 +47,8 @@ node scripts/prepare-ide-project.mjs \
 
 API固定使用现有`https://jmryqyx.cn/aidog-share`，调用[小组件request](https://miniapp.xiaohongshu.com/doc/DC531914)。保留后端原生客户端协议`GET /api/bootstrap?client=miniapp`，此处`client`不是AppID或产品类型。游客令牌只在内存及`Authorization: Bearer`请求头中；不放链接、分享参数或本地存储，不伪造Cookie、Origin、Referer。
 
+[小组件网络使用说明](https://miniapp.xiaohongshu.com/doc/DC956503)明确服务器域名配置“不做限制”；[request文档](https://miniapp.xiaohongshu.com/doc/DC531914)要求HTTPS，并禁止自行设置Referer。本工程按小组件合同联网，不要求办理小程序服务器域名白名单。实际IDE现已通过HTTPS读取共享图文并完成服务端准备请求，手机网络仍单独实测。
+
 取批固定`channel:xhs/platform:xhs`，不读取点评等其他库或私人相册。首次即用服务端对应配稿；换文案不重新取批、不动图，修改按批次和稿件保存。换批和返回首页保留各批改稿；预留到期前续租，返回页面时重新核实。断网、丢响应、身份过期、失效预留时保留当前图文并暂停原生按钮，待明确刷新成功后恢复；离页中止请求，迟到响应不覆盖页面。
 
 媒体保持服务端原顺序和原图，使用短期HTTPS图片；原生组件要求图片响应为`Content-Disposition: inline`，相关真实响应与画质仍待实机核对。标题20、正文1000的限制不静默截断。保留具体经历、不满意之处和AI说明；不新增虚假经历。
@@ -57,13 +61,13 @@ API固定使用现有`https://jmryqyx.cn/aidog-share`，调用[小组件request]
 
 按钮只有在当前批次、稿件和服务端准备结果匹配时才启用；`miniapp-session-info`仅传`{attemptId}`。改稿、换批或刷新会停用旧结果，迟到成功或失败不能覆盖新状态。准备失败保留图文，可使用原有“刷新本批”重试；图片加载和准备成功都不改库存、下载日期或发布记录。快照最长保留30天，并受相册删除期限限制；删除相册或批次时同步清除对应准备记录。
 
-启用准备接口前，须应用新增`drizzle/0006_native_publish_attempts.sql`，并在服务端配置公开的`XHS_WIDGET_APP_ID`为自己实际的24位小组件ID。该值不来自客户端，也不能使用旧小工具或其他人的身份；缺配置时接口明确返回503，原生按钮保持不可用。本轮尚未部署该迁移或配置。
+本项目Studio v9已应用`drizzle/0006_native_publish_attempts.sql`，并在服务端配置自己的24位`XHS_WIDGET_APP_ID`。复用本源码时也须先完成迁移及配置；该值不来自客户端，不能使用旧小工具或其他人的身份。缺配置时接口明确返回503，原生按钮保持不可用。官方体验版0.1.0尚未调用本轮新增准备接口。
 
 ### 推送接收代码与待核对状态
 
-工作区已实现`lib/xhs-message-crypto.ts`和`lib/xhs-message-receiver.ts`。接收路径为`/api/xhs/events`，支持现有`PUBLIC_BASE_PATH`前缀；它独立验证官方消息签名、解密并严格核对自有AppID，Cookie、游客令牌和Origin都不能代替验签。相同推送信封重试幂等保存，缺配置、校验失败或持久化失败不会返回成功确认。此接口目前仅为未部署的候选代码。
+Studio v9已部署`lib/xhs-message-crypto.ts`和`lib/xhs-message-receiver.ts`。接收路径为`/api/xhs/events`，支持现有`PUBLIC_BASE_PATH`前缀；它独立验证官方消息签名、解密并严格核对自有AppID，Cookie、游客令牌和Origin都不能代替验签。相同推送信封重试幂等保存，缺配置、校验失败或持久化失败不会返回成功确认。公网与本机回环的GET地址验证均通过，坏签名返回400；管理员收件元数据接口及原有内部服务健康检查正常。
 
-接收接口还需应用`drizzle/0007_xhs_message_receipts.sql`，并配置私有运行项`XHS_PUSH_TOKEN`、`XHS_PUSH_ENCODING_AES_KEY`及同一自有`XHS_WIDGET_APP_ID`。在本小组件控制台`/mini-widget/<appId>/pushManage`填写对应接收URL、Token及EncodingAESKey，完成官方服务器地址验证；本轮没有填写平台配置或收到真实推送，真实密钥不写入仓库。
+本项目已应用`drizzle/0007_xhs_message_receipts.sql`，配置`XHS_PUSH_TOKEN`、`XHS_PUSH_ENCODING_AES_KEY`及同一自有`XHS_WIDGET_APP_ID`；运行配置保存在权限0600的私有文件。小组件控制台`/mini-widget/<appId>/pushManage`的接收URL、Token及EncodingAESKey已通过正常页面填写并提交，平台现显示“配置信息”和“修改消息推送配置”，已接受本次配置。尚未收到真实NOTE_CHANGE，不能据地址验证或配置成功认定真实发布事件已经接通；真实密钥和私有二维码不写入仓库。
 
 合法`NOTE_CHANGE`只保存为`unmatched`（待核对），其他合法事件记为`ignored`。解密原文私有保留30天并随清理任务删除；已有管理员认证保护的`GET /api/admin/xhs/receipts`只返回收件编号、事件、笔记编号、原始发布时间标量、字段路径和接收时间，不返回原文、OpenId、密文或签名。这里的收件不是已关联到本批素材的发布记录，准备接口和接收接口均不自动出库。
 
@@ -93,6 +97,6 @@ node verify-example.mjs
 
 当前Widget记录为126项本地检查；服务端准备接口21项隔离检查、推送加解密18项检查及推送接收21项隔离检查另在项目根目录的`tests/native-xhs-attempts.mjs`、`tests/xhs-message-crypto.mjs`和`tests/xhs-message-receiver.mjs`中。加解密另通过workerd中的AES运行检查。这些检查没有收到真实平台推送，也没有替顾客发布笔记。
 
-检查只用本地虚构接口和IDE元数据夹具，覆盖页面文件、体积、资源类型、原生媒体、令牌、共享双库范围、改稿恢复、租约、失败处理、退出、静态分享及元数据合并。不能替代当前候选版本的官方编译、请求域名配置、字体加载、原图读取和Android/iOS真机验收。[LOCAL-CHECKS.json](LOCAL-CHECKS.json)及[CHECKLIST.md](CHECKLIST.md)针对当前候选源码；此前0.1.0的编译与上传结果不自动填作新版本通过。
+本地检查使用虚构接口和IDE元数据夹具，覆盖页面文件、体积、资源类型、原生媒体、令牌、共享双库范围、改稿恢复、租约、失败处理、退出、静态分享及元数据合并；新版0.1.1的官方本地编译和真实服务端快照一致性已另行核对。手机字体加载、原图读取及Android/iOS真机验收仍待完成。[LOCAL-CHECKS.json](LOCAL-CHECKS.json)记录本地检查当时的状态，部署和编译布尔值不作为实时状态；[CHECKLIST.md](CHECKLIST.md)区分实际已核对与待实测项目。官方本地编译、Studio v9上线和地址验证均不等于手机编辑页或微信链路已经通过。
 
-下一步先审核并部署0006、0007及对应后端配置，再更新真实自有IDE工程、重新编译和生成同版测试码。手机核对三图、当前标题正文、修改和取消返回；随后更新扫码体验版本，并验证官方短链及微信顾客入口。真实发布推送到达后再核对关联字段，完成素材使用记录；正式提审和发布仍是后续阶段。
+新版0.1.1已上传开发版，未更换当前0.1.0扫码体验设置。先用已交付的官方体验码核对手机三图、当前标题正文、修改和取消返回，再切换新版联调发布回调，并验证官方短链及微信顾客入口。真实发布推送到达后再核对自定义信息封装和准备编号关联，完成素材使用记录；在此之前收件仍保持unmatched、不自动归档，正式提审和发布仍是后续阶段。
